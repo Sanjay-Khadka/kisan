@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login Farmer/KisanArea</title>
+    <title>Signup Buyer/KisanArea</title>
     <!-- Website Logo -->
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png" />
     <!-- Bootstrap icons-->

@@ -1,15 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Login/KisanArea</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <script src="./js/validate.js" defer></script>
+    <!-- <script src="./js/validate.js"></script> -->
     <!-- Website Logo -->
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
+
 
 </head>
 
@@ -33,7 +33,7 @@
                                     <label for="username">
                                         <h5>Username: <span class=" text-danger">*</span></h5>
                                     </label>
-                                    <input type="text" id="username" name="username" placeholder="Username" class="form-control border-success" />
+                                    <input type="text" id="username" name="username" required placeholder="Username" class="form-control border-success" />
                                     <span class="text-danger username-not-found"></span>
                                 </div>
 
@@ -41,26 +41,18 @@
                                     <label for="password" class="mt-3">
                                         <h5>Password: <span class="text-danger">*</span></h5>
                                     </label>
-                                    <input type="password" id="password" name="password" placeholder="Password" class="form-control border-success" />
+                                    <input type="password" id="password" name="password" required placeholder="Password" class="form-control border-success" />
                                     <span class="text-danger password-not-found"></span>
                                 </div>
 
-                                <div class=" text-white form-group mt-4 mb-4">
-                                    <input type="button" name="login" class="btn btn-success d-flex justify-content-center m-auto" value="Login" onclick="" />
+                                <div class=" text-white">
+                                    <button class="d-flex m-auto justify-content-center btn btn-success form group mt-3">Login</button>
                                     <span class="text-success form-submitted"></span>
                                 </div>
                                 <div class="form-group d-flex justify-content-center mt-3 mb-2">
                                     Don't have an account? &nbsp
                                     <a href="./register.php" class="myA">Sign Up</a>
                                 </div>
-                                <!-- <div class="form-group d-flex justify-content-center mt-2">
-                                            <a href="https://www.facebook.com/" class="btn btn-outline-dark btn-light mt-auto mb-1"><i class="fa fa-facebook"></i>&nbsp&nbsp
-                                                <label class="facebook fw-bolder">Sign in with Facebook</a>
-                                        </div>
-                                        <div class="form-group d-flex justify-content-center mt-2">
-                                            <a href="https://www.gmail.com/" class="btn btn-outline-dark btn-light mt-auto"><i class="fa fa-google"></i>&nbsp&nbsp
-                                                <label class="google fw-bolder">Sign in with Google</a>
-                                        </div> -->
                             </form>
                         </div>
                     </div>
@@ -72,7 +64,7 @@
 </body>
 
 <?php
-require 'footer.php';
+require './includes/footer.php';
 ?>
 
 </html>

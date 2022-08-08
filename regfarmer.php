@@ -32,13 +32,13 @@ if (empty($password)) {
     window.location.href='farmer.php'</script>";
 }
 
-$sql = "INSERT INTO users(fname,email,username,password)
+$sql = "INSERT INTO users(fullname,email,username,password)
     VALUES ('$fname','$email','$username',PASSWORD('$password'))";
 
-if ($connection->query($sql) > 0) {
+if ($mysqli->query($sql) > 0) {
     echo "<script>alert('Farmer Registered Successfully');
     window.location.href='login.php'</script>";
 } else {
-    echo "<script>alert('Error while registering: ' . $connection->error;');
+    echo "<script>alert('Error while registering: ' . $mysqli->error;');
     </script>";
 }

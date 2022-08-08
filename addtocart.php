@@ -7,20 +7,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (in_array($_POST['Item_name'], $myitems)) {
                 echo "<script>
         alert('Item already added');
-        window.location.href='home.php';
+        window.location.href='./mycart.php';
         </script>";
             } else {
                 $count = count($_SESSION['cart']);
                 $_SESSION['cart'][$count] = array('Item_name' => $_POST['Item_name'], 'price' => $_POST['price'], 'Quantity' => 1);
                 echo "<script> alert('Item added');
-      window.location.href='home.php';
+      window.location.href='./mycart.php';
       </script>";
             }
         } else {
             $_SESSION['cart'][0] = array('Item_name' => $_POST['Item_name'], 'price' => $_POST['price'], 'Quantity' => 1);
             echo "<script>
     alert('Item added to the cart.');
-    window.location.href='home.php';
+    window.location.href='index.php';
     </script>";
         }
     }
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['cart'] = array_values($_SESSION['cart']);   //rearrange array after removing any item
                 echo "<script>
       alert('Item Removed from the cart.');
-      window.location.href='mycart.php';
+      window.location.href='./mycart.php';
       </script>";
             }
         }
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['cart'][$key]['Quantity'] = $_POST['Mod_Quantity'];
 
                 echo "<script>
-      window.location.href='mycart.php';
+      window.location.href='./mycart.php';
     </script>";
             }
         }

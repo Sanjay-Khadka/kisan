@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    $_SESSION['count'] = 1;
+} else {
+    ++$_SESSION['count'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,18 +35,18 @@
             <div class="col-10 row">
                 <div class="col py-4 zoom">
                     <div class="card h-100 mx-5">
-                        <h4 class="center mt-3 mb-3">Sign Up as farmer:</h4>
+                        <h4 class="center mt-3 mb-3">Admin:</h4>
                         <!-- Product image-->
                         <img class="card-img-top img center w-50" src="./image/userg.png" width="" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <h5 class="fw-bolder">Farmer</h5>
+                                <h5 class="fw-bolder">Admin</h5>
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a href="./farmer.php" class="btn btn-outline-dark mt-auto">Continue</a>
+                            <div class="text-center"><a href="./admin-panel/add-product.php  " class="btn btn-outline-dark mt-auto">Continue</a>
                             </div>
                         </div>
                     </div>
@@ -63,7 +72,7 @@
 
 </body>
 <?php
-require 'footer.php';
+require './includes/footer.php';
 ?>
 
 </html>

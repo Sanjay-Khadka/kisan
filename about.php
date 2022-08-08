@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    $_SESSION['count'] = 1;
+} else {
+    ++$_SESSION['count'];
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -30,50 +39,38 @@
 
     <!-- <h2 style="text-align:center" class="mt-1 mb-1">Team</h2> -->
     <div class="row justify-content-center mt-3">
-        <div class="mb-3">
-            <div class="card h-100 m-auto w-25 justify-content-center border-secondary font">
+        <div class="col mb-3">
+            <div class="card h-100 m-auto w-50 justify-content-center border-secondary font">
                 <img src="./image/bim.jpg" alt="Bimo" style="width:90%" class="image-fluid mt-3 d-flex justify-content-center m-auto">
                 <div class="container">
                     <h2>Bimochan Bajimaya</h2>
                     <p class="title my-1">Founder/Developer</p>
                     <p class="my-1">Studying BCA at ICMS, Samarpan Academy</p>
-                    <p class="my-1">bmochanb@gmail.com</p>
+                    <p class="my-1">bimochanbajimaya@tuicms.edu.np</p>
                     <p class="my-1">+977-9860232480</p>
-                    <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-2" href="./regform.php">Contact</a></div>
+                    <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-2" href="./regform.php">Contact</a></div> -->
+                </div>
+            </div>
+        </div>
+        <div class="col mb-3">
+
+            <div class="card h-100 m-auto w-50 justify-content-center border-secondary font">
+                <img src="./image/nis.jpg" alt="Nischal" style="width:90%" class="image-fluid mt-3 d-flex justify-content-center m-auto">
+                <div class="container">
+                    <h2>Nischal Dahal</h2>
+                    <p class="title my-1">Founder/Developer</p>
+                    <p class="my-1">Studying BCA at ICMS, Samarpan Academy</p>
+                    <p class="my-1">nischaldahal@tuicms.edu.np</p>
+                    <p class="my-1">+977-9805940865</p>
+                    <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-2" href="./regform.php">Contact</a></div> -->
 
                 </div>
             </div>
         </div>
-
-        <!-- <div class=" column">
-                            <div class="card">
-                                <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
-                                <div class="container">
-                                    <h2>Mike Ross</h2>
-                                    <p class="title">Art Director</p>
-                                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                                    <p>mike@example.com</p>
-                                    <p><button class="button">Contact</button></p>
-                                </div>
-                            </div>
-                </div>
-
-                <div class="column">
-                    <div class="card">
-                        <img src="/w3images/team3.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h2>John Doe</h2>
-                            <p class="title">Designer</p>
-                            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                            <p>john@example.com</p>
-                            <p><button class="button">Contact</button></p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+    </div>
 </body>
 <?php
-require 'footer.php';
+require './includes/footer.php';
 ?>
 
 </html>
