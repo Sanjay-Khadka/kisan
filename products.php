@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>KisanArea||Product Info</title>
+	<title>KisanArea/Product Info</title>
 	<!-- Website Logo-->
 	<link rel="icon" type="image/x-icon" href="./image/Sawari.png" />
 	<!-- Bootstrap icons-->
@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								<?php echo $product['description']; ?>
 							</div>
 							<div class="btn-group-sm d-flex justify-content-center m-auto mb-3 mt-5">
-								<a href="./mycart.php" class="btn btn-dark btn-outline-green text-white">
+								<a href="./mycart.php" class="btn btn-success btn-outline-navigation text-white">
 									Add to cart
 								</a>
 							</div>

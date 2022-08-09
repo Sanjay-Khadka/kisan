@@ -32,28 +32,28 @@ if (!isset($_SESSION['username'])) {
     ?>
     <section class="p-0 bg-dark font">
         <div class="container d-flex justify-content-center p-5 ">
-            <div class="col-10 row">
-                <div class="col py-4 zoom">
+            <div class="col-10 row ">
+                <!-- <div class="col py-4 zoom">
                     <div class="card h-100 mx-5">
-                        <h4 class="center mt-3 mb-3">Admin:</h4>
-                        <!-- Product image-->
-                        <img class="card-img-top img center w-50" src="./image/userg.png" width="" />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
+                        <h4 class="center mt-3 mb-3">Admin:</h4> -->
+                <!-- Product image-->
+                <!-- <img class="card-img-top img center w-50" src="./image/userg.png" width="" /> -->
+                <!-- Product details-->
+                <!-- <div class="card-body p-4"> -->
+                <!-- <div class="text-center">
                                 <h5 class="fw-bolder">Admin</h5>
                             </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        </div> -->
+                <!-- Product actions-->
+                <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center"><a href="./admin-panel/add-product.php  " class="btn btn-outline-dark mt-auto">Continue</a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col py-4 zoom">
-                    <div class="card h-100 mx-5">
-                        <h4 class="center mt-3 mb-3">Sign Up as buyer:</h4>
+                        </div> -->
+                <!-- </div> -->
+                <!-- </div> -->
+                <div class="col d-flex justify-content-center py-4 zoom">
+                    <div class="card h-100 w-50 mx-5">
+                        <h4 class="center mt-3 mb-3">Sign Up:</h4>
                         <img class="card-img-top img center w-50" src="./image/cartg.png" width="50%" />
                         <div class="card-body p-4">
                             <div class="text-center">

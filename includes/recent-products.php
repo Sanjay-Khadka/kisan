@@ -38,7 +38,7 @@ $featuredAuctions = mysqli_query($mysqli, "SELECT * FROM products WHERE isActive
                             <!-- Product actions-->
                             <div class="text-center card-footer border-top-0 bg-transparent">
                                 <div class="btn-group-sm mb-3">
-                                    <a href="products.php?pid=<?php echo $featuredProd["productid"]; ?>" class="btn btn-secondary btn-outline-dark   text-white">
+                                    <a href="products.php?pid=<?php echo $featuredProd["productid"]; ?>" class="btn btn-success btn-outline-navigation   text-white">
                                         Details
                                     </a>
                                 </div>
