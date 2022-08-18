@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 
 // echo $_SESSION['count'];
 
-include 'db-config.php';
+include 'dbconn.php';
 ?>
 
 

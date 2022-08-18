@@ -1,0 +1,97 @@
+<?php
+include('../dbconn.php');
+session_start();
+extract($_POST);
+
+if (isset($login)) {
+    $user = $_POST["user"];
+    $pass = $_POST["pass"];
+    $que = mysqli_query($mysqli, "select * from admin where user='$user' and pass='$pass'");
+    $row = mysqli_num_rows($que);
+    if ($row) {
+        $_SESSION['admin'] = $user;
+        header('location:add-product.php');
+    } else {
+        $err = "<font color='red'>Please check your user and password!!</font>";
+    }
+}
+?>
+
+<html lang="en">
+
+<head>
+    <title>Admin Login/KisanArea</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <!-- <script src="./js/validate.js"></script> -->
+    <!-- Website Logo -->
+    <link rel="icon" type="image/x-icon" href="../image/kisanarea.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+
+<body class="bg-dark">
+
+    <section class="bg-dark">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="col-5 d-flex justify-content-center m-auto">
+                    <div class=" d-flex justify-content-center mb-3 mt-5 wid text-white" style="border-radius: 25px;">
+                        <h3><a href="#" class="nav-link text-white"><b class="hov">Admin Login</b></a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-dark">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="col-5 d-flex justify-content-center m-auto">
+                    <div class="card mb-5 wid text-black" style="border-radius: 25px;">
+                        <div class="border-2 card-body rounded-2">
+                            <img src="../image/kisanarea.png" width="37%" alt="KisanArea" class="center mt-3 ">
+                            <h3 class="text-success d-flex justify-content-center mt-2 mb-3 font">Admin KisanArea</h3>
+                            <form method="POST" class="mt-2">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="username" class="mb-2"><b>Username</label>
+                                        <span class="text-danger">*</span></b> <input class="form-control mb-2 border-success" name="user" type="text" required placeholder="Username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="mb-2"><b>Password</label>
+                                        <span class="text-danger">*</span></b>
+                                        <input class="form-control mb-2 border-success" placeholder="Password" name="pass" type="password" required>
+                                    </div>
+
+                                    <div class="form-group d-flex form-group justify-content-center mt-3">
+                                        <input name="login" type="submit" value="Login" class="d-flex justify-content-between mt-2 btn btn-success btn-block">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>
+                                            <?php echo @$err; ?>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="../css/css/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../css/css/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../css/css/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../css/css/sb-admin-2.js"></script>
+
+</body>
+
+</html>

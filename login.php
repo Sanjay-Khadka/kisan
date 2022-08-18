@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    <title>Login/KisanArea</title>
+    <title>Login | KisanArea</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <!-- <script src="./js/validate.js"></script> -->
     <!-- Website Logo -->

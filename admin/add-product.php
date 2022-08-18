@@ -6,7 +6,7 @@ include_once("../func.php");
 
 // $username = $_SESSION["email"];
 // $userID = $_SESSION["userid"];
-$user = $_SESSION["user"];
+// $user = $_SESSION["username"];
 
 // $user_image = $_SESSION["user_image"];
 // $user_fullname = $_SESSION["user_fullName"];
@@ -57,8 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $isActive = $_POST['isActive'];
   $isFeatured = $_POST['isFeatured'];
 
-
-
   try {
 
     // Code to Upload FIles
@@ -82,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (!$insertData) {
     $message = 'Couldnot save data..' . $e;
-    echo mysqli_error();
+    echo 'mysqli_error()';
   } else {
     echo "<script>alert('Product added successfully');</script>";
     header("Location:../admin-panel/add-product.php");
@@ -107,6 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/bootstrap.css" />
   <!-- daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
   <!-- iCheck for checkboxes and radio inputs -->
@@ -126,19 +126,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="plugins/dropzone/min/dropzone.min.css" />
   <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.min.css" />
+  <link rel="icon" type="image/x-icon" href="../image/kisanarea.png" />
+
 </head>
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-dark">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
+        </li> -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.php" class="nav-link">Home</a>
+          <a href="#" class="nav-link text-white-50 font">Home</a>
         </li>
         <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="../contact.php" class="nav-link">Contact</a>
@@ -147,7 +149,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
         <!-- <li class="nav-item">
           <a class="nav-link" data-widget="navbar-search" href="#" role="button">
             <i class="fas fa-search"></i>
@@ -171,11 +172,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-user"></i> <?php echo $_SESSION["user"]; ?>
+
+        <li>
+          <a class="nav-link text-white-50 font" href="#">
+            <i class="fa fa-user text-white-50"></i> Admin
           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        </li>
+        <li class="info">
+          <a class="nav-link text-white-50 font" href="./logout.php">
+            <i class="fa fa-sign-out-alt text-white-50" aria-hidden="true"></i>Logout
+          </a> <!-- Navbar Search -->
+        </li>
+        <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <div class="dropdown-divider"></div>
             <a href="manage-profile.php" class="dropdown-item">
               <i class="fas fa-plus mr-2"></i> Manage Profile
@@ -183,8 +191,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="add-product.php" class="dropdown-item">
               <i class="fas fa-plus mr-2"></i> Add New Product
 
-            </a>
-            <!-- <div class="dropdown-divider"></div>
+            </a> -->
+        <!-- <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
               <i class="fas fa-users mr-2"></i> 8 friend requests
               <span class="float-right text-muted text-sm">12 hours</span>
@@ -197,7 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div> -->
-        </li>
+        <!-- </li> -->
 
       </ul>
     </nav>
@@ -206,9 +214,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../index.php" class="brand-link">
-        <img src="../image/w.png" alt="kisanarea Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
-        <span class="brand-text font-weight-light">KisanArea</span>
+      <a href="#" class="brand-link">
+        <img src="../image/w.png" alt="KisanArea Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+        <span class="brand-text font">KisanArea</span>
       </a>
 
       <!-- Sidebar -->
@@ -216,22 +224,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="../image/userg.png" class="img-circle elevation-2" alt="User Image" />
+            <img src="../image/userw.png" class="img-circle elevation-2" alt="User Image" />
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?php echo $_SESSION['username']; ?></a>
-          </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
+            <a href="#" class="d-block font">Admin</a>
           </div>
         </div>
 
@@ -241,35 +237,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <a href="./dashboard.php" class="d-block nav-link font">
+                <i class="nav-icon fas fa-user-edit"></i>
                 <p>
-                  Manage Item
-                  <i class="right fas fa-angle-left"></i>
+                  Dashboard
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../../index.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Product</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../index2.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v2</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v3</p>
-                  </a>
-                </li>
-              </ul>
             </li>
-
+            <li class="nav-item">
+              <a href="./add-product.php" class="d-block nav-link font">
+                <i class="nav-icon fas fa-upload"></i>
+                <p>
+                  Add Product
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./manageprod.php" class="nav-link font">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  Manage Product
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./manageUsr.php" class="d-block nav-link font">
+                <i class="nav-icon fas fa-user-edit"></i>
+                <p>
+                  Manage User
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -281,19 +279,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Add New Product</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-              </ol>
-            </div>
-          </div>
+        <div class="container d-flex justify-content-center">
+          <b class="font">
+            <h1>Add New Product</h1>
+          </b>
         </div>
-        <!-- /.container-fluid -->
       </section>
 
       <!-- Main content -->
@@ -301,94 +291,99 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container-fluid">
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default">
-            <div class="card-header">
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <form method="POST" id="ProductDetails" enctype="multipart/form-data" onsubmit="">
-              <div class="form-row">
-                <div class="form-group col-md-6 col-lg-6">
-                  <label>Product Name</label>
-                  <input type="text" name="name" id="name" class="form-control" value="" placeholder="Product Name">
-                </div>
 
-                <!-- <div class="form-group col-md-6 col-lg-6">
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body font">
+          <form method="POST" id="ProductDetails" enctype="multipart/form-data" onsubmit="">
+            <div class="form-row">
+              <div class="form-group col-md-6 col-lg-6">
+                <label>Product Name</label>
+                <input type="text" name="name" id="name" class="form-control border-1 border-secondary" value="" placeholder="Product Name">
+              </div>
+
+              <!-- <div class="form-group col-md-6 col-lg-6">
                     <label>Base Price for Bidding</label>
-                    <input type="number" name="base_price" id="base_price" class="form-control" min="1000" value="25000" placeholder="Base Price for Product">
+                    <input type="number" name="base_price" id="base_price" class="form-control border-1 border-secondary" min="1000" value="25000" placeholder="Base Price for Product">
                   </div> -->
 
-                <div class="form-group col-md-6 col-lg-6">
-                  <label>Photo URL</label>
-                  <input type="file" name="photo" id="photo" class="form-control p-1" placeholder="Photo URL">
-                </div>
+              <div class="form-group col-md-6 col-lg-6">
+                <label>Photo URL</label>
+                <input type="file" name="photo" id="photo" class="form-control border-1 border-secondary p-1" placeholder="Photo URL">
+              </div>
 
 
-                <!-- <div class="form-group col-md-6">
+              <!-- <div class="form-group col-md-6">
                     <label>Category</label>
-                    <select name="categoryid" required autocomplete="off" class="form-control combobox" id="categoryid">
+                    <select name="categoryid" required autocomplete="off" class="form-control border-1 border-secondary combobox" id="categoryid">
                       <option value="1">None</option>
                       <option value="2">Fruit</option>
                       <option value="3">Vegetable</option>
                     </select>
                   </div> -->
 
-                <div class="form-group col-md-6 col-lg-6">
-                  <label>Price</label>
-                  <input type="number" name="price" id="price" value="" class="form-control">
-                </div>
+              <div class="form-group col-md-6 col-lg-6">
+                <label>Price</label>
+                <input type="number" name="price" id="price" placeholder="Price" class="form-control border-1 border-secondary">
+              </div>
 
-                <div class="form-group col-md-8 col-lg-12">
-                  <label>Short Description</label>
-                  <textarea name="shortdescription" id="shortdescription" cols="10" rows="5" class="form-control"></textarea>
-                </div>
+              <div class="form-group col-md-8 col-lg-12">
+                <label>Short Description</label>
+                <textarea name="shortdescription" id="shortdescription" cols="10" rows="5" class="form-control border-1 border-secondary" placeholder="Short Description"></textarea>
+              </div>
 
-                <div class="form-group col-md-8 col-lg-12">
-                  <label>Product Description:</label>
-                  <textarea name="description" id="description" cols="10" rows="5" class="form-control"></textarea>
-                </div>
+              <div class=" form-group col-md-8 col-lg-12">
+                <label>Product Description:</label>
+                <textarea name="description" id="description" cols="10" rows="5" class="form-control border-1 border-secondary" placeholder="Product Description"></textarea>
+              </div>
 
-                <div class="form-group col-md-8 col-lg-12">
-                  <label>Features</label>
-                  <textarea name="features" id="features" cols="10" rows="5" class="form-control"></textarea>
-                </div>
+              <div class="form-group col-md-8 col-lg-12">
+                <label>Features</label>
+                <textarea name="features" id="features" cols="10" rows="5" class="form-control border-1 border-secondary" placeholder="Features"></textarea>
+              </div>
 
-                <div class="form-group col-md-6 col-md-6">
-                  <label>Is Active</label>
-                  <select name="isActive" required autocomplete="off" class="form-control combobox" id="isActive">
-                    <option value="1">Active</option>
-                    <option value="2">Inactive</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6 col-md-6">
-                  <label>Is Featured</label>
-                  <select name="isFeatured" required autocomplete="off" class="form-control combobox" id="isFeatured">
-                    <option value="1">Active</option>
-                    <option value="2">Inactive</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-12">
-                  <input type="submit" value="SAVE" name="" id="" class="btn btn-secondary" />
-                  <input name="" type="reset" value="Reset" class="btn btn-secondary" />
-                </div>
+              <div class="form-group col-md-6 col-md-6">
+                <label>Is Active</label>
+                <select name="isActive" required autocomplete="off" class="form-control border-1 border-secondary combobox" id="isActive">
+                  <option value="1">Active</option>
+                  <option value="2">Inactive</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-md-6">
+                <label>Is Featured</label>
+                <select name="isFeatured" required autocomplete="off" class="form-control border-1 border-secondary combobox" id="isFeatured">
+                  <option value="1">Active</option>
+                  <option value="2">Inactive</option>
+                </select>
+              </div>
+              <div class="form-group col-md-12">
+                <input type="submit" value="ADD" name="submit_prod" id="submit" class="btn btn-success" />
+                <input type="reset" value="RESET" name="" id="submit" class="btn btn-secondary" />
+                <?php
+                if (isset($_POST['submit_prod'])) {
+                  echo '<script>
+                  alert("Product Added Successfully.");
+                  </script>';
+                }
+                ?>
+              </div>
+            </div>
 
+          </form>
+          <!-- /.content-wrapper -->
+          <footer class="d-flex justify-content-center mt-5">
+            <strong>Copyright &copy; 2022
+              <a href="#">KisanArea</a>.</strong>
+          </footer>
 
-            </form>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
-              <strong>Copyright &copy; 2022
-                <a href="../index.php">KisanArea</a>.</strong>
-            </footer>
+          <!-- Control Sidebar -->
 
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-              <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
-          </div>
-          <!-- ./wrapper -->
-
-          <!-- jQuery -->
+          <!-- /.control-sidebar -->
+        </div>
+      </section>
+    </div>
+  </div>
 
 </body>
 

@@ -4,7 +4,7 @@ include('./dbconn.php');
 <html lang="en">
 
 <head>
-    <title>Search/KisanArea</title>
+    <title>Search | KisanArea</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <!-- <script src="./js/validate.js"></script> -->
     <!-- Website Logo -->

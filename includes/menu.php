@@ -63,9 +63,13 @@ session_start();
                                     $count = count($_SESSION['cart']);
                                 }
                                 ?>
-                                <div class="text-center"><a class="btn btn-outline-light d-flex" id="addtocartbtn" href="./mycart.php">Cart
-                                        <span><i class="bi-cart-fill me-1 cd"></i></span>(<?php echo $count; ?>)</a>
-                                </div>
+                                <?php if (isset($_SESSION['username'])) {
+                                    echo '<div class="text-center"><a class="btn btn-outline-light d-flex" id="addtocartbtn" href="./mycart.php">Cart
+                                        <span><i class="bi-cart-fill me-1 cd"></i></span>' . '(' .   $count . ')' . '</a></div>';
+                                } else {
+                                    '<script> console.log();</script>';
+                                }
+                                ?></b></a>
                             </form>
                         </li>
                     </ul>
@@ -74,7 +78,7 @@ session_start();
         </div>
     </nav>
 </header>
-<script>
+<!-- <script>
     var checkLogin = <?php $isUserLoggedIn; ?>
 
     if (checkLogin == true) {
@@ -82,4 +86,4 @@ session_start();
     } else {
         document.getElementById("addtocartbtn").disabled = true;
     }
-</script>
+</script> -->

@@ -1,5 +1,4 @@
 <?php
-
 include("./includes/menu.php");
 ?>
 <!DOCTYPE html>
@@ -8,7 +7,7 @@ include("./includes/menu.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart/KisanArea</title>
+    <title>Cart | KisanArea</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png">

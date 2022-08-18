@@ -18,5 +18,5 @@ $sql = "CREATE DATABASE $database";
 if ($connection->query($sql)) {
     echo "Database Created Successfully";
 } else {
-    echo "Error Created Database: " . $connection->connect_error;
+    echo "Error Creating Database: " . $connection->connect_error;
 }

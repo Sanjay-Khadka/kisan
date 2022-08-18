@@ -122,63 +122,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
 
 								</div>
+							</div>
 						</form>
-
-						<!-- <div class="container">
-								<form id="bidding_form" method="POST" class="edd_form">
-									<div class="elem-group">
-										<label for="name">Full Name</label>
-										<input type="text" id="visitor_name" class="form-control" name="visitor_name" placeholder="Full Name" pattern=[A-Z\sa-z]{3,20} required>
-									</div>
-									<div class="elem-group">
-										<label for="email">Your E-mail</label>
-										<input type="email" id="visitor_email" class="form-control" name="visitor_email" placeholder="name@gmail.com" required>
-									</div>
-									<div class="elem-group">
-										<label for="phone">Your Phone</label>
-										<input type="tel" id="visitor_phone" class="form-control" name="visitor_phone" placeholder="9860232480" pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
-									</div> -->
-						<!-- <hr>
-									<div class="elem-group inlined">
-										<label for="adult">Adults</label>
-										<input type="number" id="adult" class="form-control" name="total_adults" placeholder="2" min="1" required>
-									</div>
-									<div class="elem-group inlined">
-										<label for="child">Children</label>
-										<input type="number" id="child" class="form-control" name="total_children" placeholder="2" min="0" required>
-									</div>
-									<div class="elem-group inlined">
-										<label for="checkin-date">Check-in Date</label>
-										<input type="date" class="form-control" id="checkin-date" name="checkin" required>
-									</div>
-									<div class="elem-group inlined">
-										<label for="checkout-date">Check-out Date</label>
-										<input type="date" class="form-control" id="checkout-date" name="checkout" required>
-									</div> -->
-						<!-- <div class="elem-group">
-										<label for="room-selection">Type of Product</label>
-										<select id="room-selection" name="room_preference" class="form-control" required>
-											<option value="Vegetables">Vegetables</option>
-											<option value="Fruits">Fruits</option>
-											<option value=""></option>
-											<option value="adjacent"></option>
-										</select>
-									</div>
-									<hr> -->
-						<!-- <div class="elem-group">
-										<label for="message">Anything Else?</label>
-										<textarea id="message" class="form-control" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
-									</div> -->
-						<!-- <button type="submit">Reserve</button> -->
-						<!-- </form> -->
 					</div>
 					<hr>
 				</div>
 			</div>
-			</div>
 		</section>
-		<!-- Property Detail End -->
-
 
 	<?php } ?>
 
@@ -190,10 +140,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<script src="./js/cart.js"></script> <!-- util functions included in the CodyHouse framework -->
 	<script src="./js/util.js"></script>
 
-
-
 </body>
-
-<!-- Mirrored from codeminifier.com/reveal-live/reveal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 Jul 2021 10:35:29 GMT -->
 
 </html>
