@@ -13,12 +13,12 @@
 
 </head>
 
-<body background="./image/a.jpg">
+<body>
 
     <?php
     require './includes/menu.php';
     ?>
-    <section class="">
+    <section class="bg-dark">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-5 d-flex justify-content-center m-auto">

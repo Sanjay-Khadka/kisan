@@ -6,19 +6,21 @@ $featuredAuctions = mysqli_query($mysqli, "SELECT * FROM products WHERE isActive
     <div class="container px-4 px-lg-5 mt-0">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div class="input-group" style=" display:inline-flex; justify-content:flex-end; align-items:right; margin:40px;">
-
-                <div class="form-outline ">
-                    <input type="search" id="form1" placeholder="Search" class="form-control border-success border-2 float-right" />
-                </div> &nbsp
-                <button type="button" class="btn navigation text-white" data-toggle="collapse" data-target="#search">
-                    <i class="fa fa-search"></i>
-                </button>
+                <form method="GET" action="./psearch.php">
+                    <div class="d-flex form-outline justify-content-end">
+                        <input type="search" required value="<?php if (isset($_GET['search'])) {
+                                                                    echo $_GET['search'];
+                                                                } ?>" placeholder="Search" name="search" class="d-inline form-control border-success border-2 w-75">&nbsp
+                        <button type="submit" class="btn navigation text-white">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
-
             <!-- Products -->
             <?php while ($featuredProd = mysqli_fetch_array($featuredAuctions)) { ?>
                 <div class="col mb-5 zoom">
-                    <div class="card h-100">
+                    <div class="border-1 border-success card h-100 rounded-3">
                         <form action="" method="POST">
                             <!-- Product image-->
                             <img class="card-img-top" src="admin-panel/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />

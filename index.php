@@ -33,7 +33,7 @@ include 'db-config.php';
 
 </head>
 
-<body onload="digiClock()">
+<body>
     <?php
     require './includes/menu.php';
     ?>

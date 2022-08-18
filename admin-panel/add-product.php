@@ -215,7 +215,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+            <img src="../image/userg.png" class="img-circle elevation-2" alt="User Image" />
           </div>
           <div class="info">
             <a href="#" class="d-block"><?php echo $_SESSION['username']; ?></a>
@@ -254,7 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Add Product</p>
                   </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                   <a href="../../index2.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Dashboard v2</p>
@@ -265,7 +265,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <i class="far fa-circle nav-icon"></i>
                     <p>Dashboard v3</p>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </li>
 
@@ -319,7 +319,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="form-group col-md-6 col-lg-6">
                   <label>Photo URL</label>
-                  <input type="file" name="photo" id="photo" class="form-control" placeholder="Photo URL">
+                  <input type="file" name="photo" id="photo" class="form-control p-1" placeholder="Photo URL">
                 </div>
 
 

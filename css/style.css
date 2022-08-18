@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 header {
-    font-family: 'Trebuchet MS';
+    font-family: 'Lora', serif;
+    /* font-family: 'Trebuchet MS'; */
 }
 
 .hov {
@@ -15,7 +17,7 @@ header {
 }
 
 body {
-    font-family: 'Trebuchet MS';
+    font-family: 'Lora', serif;
     margin: 0;
     background-size: cover;
 }
@@ -90,7 +92,7 @@ h2 {
 }
 
 .font {
-    font-family: 'Trebuchet MS';
+    font-family: 'Lora', serif;
 }
 
 .zoom {
@@ -130,22 +132,3 @@ h2 {
     text-decoration-color: purple;
     color: purple;
 }
-
-
-/* .facebook {
-    color: blue
-}
-
-.google {
-    color: orangered;
-}
-
-.fa-facebook {
-    background: transparent;
-    color: blue;
-}
-
-.fa-google {
-    background: transparent;
-    color: orangered;
-} */

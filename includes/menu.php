@@ -1,6 +1,6 @@
 <?php
 session_start();
-$isUserLoggedIn = ($_SESSION['username'] == '') ? false : true;
+// $isUserLoggedIn = ($_SESSION['username'] == '') ? false : true;
 ?>
 
 <header id="header">
@@ -12,7 +12,7 @@ $isUserLoggedIn = ($_SESSION['username'] == '') ? false : true;
                     <a class="navbar-brand text-light a" style="font-size:22px;" href="./index.php"><strong class="hov">KisanArea</strong></a>
                 </div>
             </div>
-            <div class="container w-75" style="font-family:'Trebuchet MS'; font-size:14px;">
+            <div class="container w-75" style="font-family:'Lora', serif; font-size:14px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,24 +26,34 @@ $isUserLoggedIn = ($_SESSION['username'] == '') ? false : true;
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link a text-light px-4 " href="./register.php"><b class="hov">Register</b></a>
+                            <?php if (isset($_SESSION['username'])) {
+                                echo
+                                '<a class="nav-link a text-light px-4"><b class="hov"><i class="bi bi-person"></i>' . " " . $_SESSION['username'];
+                                '</b></a>';
+                            } else {
+                                echo '<a class="nav-link a text-light px-4 " href="./register.php"><b class="hov">Register</b></a>';
+                            }
+
+                            ?>
+                            </b></a>
                         </li>
                         <!-- <li class="nav-item">
 							<a class="nav-link a text-light px-4 " href="./login.php"><b class="hov">Login</b></a>
 						</li> -->
+                        <!-- <a class="nav-link a text-light px-4"><b class="hov"><i class="bi bi-person"></i>' . " " . $_SESSION['username'];
+                                '</b></a>' -->
 
                         <li class="nav-item">
                             <!-- <a class="nav-link a text-light px-4" href="./logout.php"><b class=" hov"> -->
                             <?php if (isset($_SESSION['username'])) {
-                                echo '<a class="nav-link a text-light px-4" href="./logout.php"><b class="hov"><i class="bi bi-person"></i>' . " " . $_SESSION['username'];
-                                '</b></a>';
+                                echo '<a class="nav-link a text-light px-4 " href="./logout.php"><b class="hov"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</b></a>';
                             } else {
                                 echo '<a class="nav-link a text-light px-4" href="./login.php"><b class="hov">Login</b></a>';
                             }
                             ?>
                             </b></a>
                         </li>
-                        <!-- <a class="nav-link a text-light px-4 " href="./admin-panel/add-product.php"><b class="hov">Welcome <?php echo $_SESSION['username']; ?></b></a> -->
+                        <!-- <a class="nav-link a text-light px-4 " href="./admin-panel/add-product.php"><b class="hov">Welcome /b></a> -->
 
                         <li class="nav-item mx-4">
                             <form class="d-flex">
@@ -53,7 +63,7 @@ $isUserLoggedIn = ($_SESSION['username'] == '') ? false : true;
                                     $count = count($_SESSION['cart']);
                                 }
                                 ?>
-                                <div class="text-center"><a class="btn btn-outline-light d-flex addtocartbtn" href="./mycart.php">Cart
+                                <div class="text-center"><a class="btn btn-outline-light d-flex" id="addtocartbtn" href="./mycart.php">Cart
                                         <span><i class="bi-cart-fill me-1 cd"></i></span>(<?php echo $count; ?>)</a>
                                 </div>
                             </form>

@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 include 'db-config.php';
 
 $productid = $_GET['pid'];
@@ -94,24 +92,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="row">
 
 					<!-- property main detail -->
-					<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="col">
 
 						<!-- Single Block Wrap -->
-						<div class="Reveal-block-wrap">
-							<div class="Reveal-block-header">
-								<img class="card-img-top w-25 center" src="uploads/products/<?php echo $product['photo']; ?>" alt="" />
-								<h1 class="text-center"><?php echo $product['name']; ?></h1>
-								<h4 class="text-center">Rs. <?php echo $product['price']; ?></h4>
-							</div>
+						<div class="Reveal-block-wrap border-success border-1 rounded-2 ">
+							<form method="POST" action="./addtocart.php">
+								<div class="Reveal-block-header">
+									<img class="card-img-top w-25 center" src="uploads/products/<?php echo $product['photo']; ?>" alt="" />
+									<h1 class="text-center"><?php echo $product['name']; ?></h1>
+									<h4 class="text-center">Rs. <?php echo $product['price']; ?></h4>
+								</div>
 
-							<div class="Reveal-block-body">
-								<?php echo $product['description']; ?>
-							</div>
-							<div class="btn-group-sm d-flex justify-content-center m-auto mb-3 mt-5">
-								<a href="./mycart.php" class="btn btn-success btn-outline-navigation text-white">
-									Add to cart
-								</a>
-							</div>
+								<div class="text-center Reveal-block-body">
+									<?php echo $product['description']; ?>
+								</div>
+								<div class="btn-group-sm d-flex justify-content-center m-auto mb-3 mt-5">
+									<input type="hidden" id="Item_name" class="Add_To_cart" value="<?php echo $product['name']; ?>">
+									<input type="hidden" id="price" class="Add_To_cart" value="<?php echo $product['price']; ?>">
+									<button type="submit" class="btn btn-success btn-outline-navigation text-white">
+										Add to cart
+									</button> <!-- </a> -->
+
+
+								</div>
+							</form>
 
 							<!-- <div class="container">
 								<form id="bidding_form" method="POST" class="edd_form">
