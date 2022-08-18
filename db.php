@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = 'root';
 $password = '';
-$database = 'db';
+$database = 'kisanarea';
 
 //  Creating Connection
 $connection = new mysqli($servername, $username, $password);

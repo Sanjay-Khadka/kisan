@@ -1,3 +1,6 @@
+<?php
+include('./dbconn.php');
+?>
 <html lang="en">
 
 <head>
@@ -32,41 +35,47 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $con = mysqli_connect("localhost", "root", "", "kisanarea");
+                        <form method="POST" action="./addtocart.php">
+                            <?php
+                            $con = mysqli_connect("localhost", "root", "", "kisanarea");
 
-                        if (isset($_GET['search'])) {
-                            $filtervalues = $_GET['search'];
-                            $query = "SELECT * FROM products WHERE CONCAT(name) LIKE '%$filtervalues%' ";
-                            $query_run = mysqli_query($con, $query);
+                            if (isset($_GET['search'])) {
+                                $filtervalues = $_GET['search'];
+                                $query = "SELECT * FROM products WHERE CONCAT(name) LIKE '%$filtervalues%' ";
+                                $query_run = mysqli_query($con, $query);
 
-                            if (mysqli_num_rows($query_run) > 0) {
-                                foreach ($query_run as $featuredProd) {
-                        ?>
+                                if (mysqli_num_rows($query_run) > 0) {
+                                    foreach ($query_run as $featuredProd) {
+                            ?>
+
+                                        <tr>
+                                            <td class="w-25 "><img class=" card-img-top img-fluid img-thumbnail w-50"" src=" admin-panel/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />
+                                            </td>
+                                            <td><?= $featuredProd['name']; ?></td>
+                                            <td><?= $featuredProd['description']; ?></td>
+                                            <td><?= $featuredProd['price']; ?></td>
+                                            <td><button type="submit" href="" name="Add_To_cart" class="btn btn-success btn-outline-navigation text-white">
+                                                    Add to cart
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                } else {
+
+                                    ?>
                                     <tr>
-                                        <td class="w-25 "><img class=" card-img-top img-fluid img-thumbnail w-50"" src=" admin-panel/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />
-                                        </td>
-                                        <td><?= $featuredProd['name']; ?></td>
-                                        <td><?= $featuredProd['description']; ?></td>
-                                        <td><?= $featuredProd['price']; ?></td>
-                                        <td><a href="./mycart.php" class="btn btn-success btn-outline-navigation text-white">
-                                                Add to cart
-                                            </a></td>
+                                        <td colspan="5">No Records Found</td>
                                     </tr>
-                                <?php
+                            <?php
+
                                 }
-                            } else {
-
-                                ?>
-                                <tr>
-                                    <td colspan="5">No Records Found</td>
-                                </tr>
-                        <?php
-
                             }
-                        }
 
-                        ?>
+                            ?>
+                            <input type="hidden" name="Item_name" value="<?php echo $products['name']; ?>">
+                            <input type="hidden" name="price" value="<?php echo $products['price']; ?>">
+                        </form>
                     </tbody>
                 </table>
             </div>

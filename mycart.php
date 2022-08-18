@@ -18,7 +18,7 @@ include("./includes/menu.php");
 
 <body>
 
-    <div class="container" style="font-family:'Trebuchet MS';">
+    <div class="container" style="font-family:'Loco',serif;">
         <div class=" row">
             <div class="col-lg-12 text-center text-white border rounded navigation my-5">
                 <h1>MY CART</h1>
@@ -48,7 +48,7 @@ include("./includes/menu.php");
       <td>$value[Item_name]</td>
       <td>$value[price]<input type='hidden' class='iprice' value='$value[price]'></td>
       <td>
-      <form action='addtocart.php' method='POST'>
+      <form action='./addtocart.php' method='POST'>
       <input class='text-center iquantity' name='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[Quantity]' min='1' max='12'></td>
       <input type='hidden' name='Item_name' value='$value[Item_name]'>
       </form>
@@ -56,7 +56,7 @@ include("./includes/menu.php");
 </td>
       <td class='itotal'></td>
       <td>
-      <form action='addtocart.php' method='POST'>
+      <form action='./addtocart.php' method='POST'>
       <button name='Remove_Item' class='btn btn-sm btn-outline-danger'>REMOVE</button>
       <input type='hidden' name='Item_name' value='$value[Item_name]'>
       </form>
@@ -78,7 +78,7 @@ include("./includes/menu.php");
                     if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
                     ?>
                         <!--customer details for payment -->
-                        <form action="purchase.php" method="POST">
+                        <form action="./purchase.php" method="POST">
                             <div class="form-group">
                                 <label>Full Name:</label>
                                 <input type="text" name="fullname" class="form-control" required>

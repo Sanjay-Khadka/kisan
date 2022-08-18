@@ -6,21 +6,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $myitems = array_column($_SESSION['cart'], 'Item_name');
             if (in_array($_POST['Item_name'], $myitems)) {
                 echo "<script>
-        alert('Item already added');
+        alert('Product already added');
         window.location.href='./mycart.php';
         </script>";
             } else {
                 $count = count($_SESSION['cart']);
                 $_SESSION['cart'][$count] = array('Item_name' => $_POST['Item_name'], 'price' => $_POST['price'], 'Quantity' => 1);
-                echo "<script> alert('Item added');
+
+                // DB Insert Code
+                echo "<script> alert('Product added successfully');
       window.location.href='./mycart.php';
       </script>";
             }
         } else {
             $_SESSION['cart'][0] = array('Item_name' => $_POST['Item_name'], 'price' => $_POST['price'], 'Quantity' => 1);
             echo "<script>
-    alert('Item added to the cart.');
-    window.location.href='index.php';
+    alert('Product added to the cart.');
+    window.location.href='./index.php';
     </script>";
         }
     }
@@ -50,4 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+}
+
+function generateOrderCode()
+{
+    $last = "select *from getLastRecord ORDER BY id DESC LIMIT 1";
+    $last++;
 }

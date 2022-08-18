@@ -1,5 +1,5 @@
 <?php
-include 'db-config.php';
+include('./dbconn.php');
 
 $productid = $_GET['pid'];
 
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// $biddingData= mysqli_query($mysqli,"UPDATE bidders SET product_id = '$propertyID', user_id = '$UserID', amount = '$bidAmount'  WHERE slug='$listingSlug'");
 	if (!$insertData) {
-		echo mysqli_error();
+		echo 'mysqli_error()';
 	}
 	header("Location:products.php?pid=" . $productID);
 }
@@ -95,8 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<div class="col">
 
 						<!-- Single Block Wrap -->
-						<div class="Reveal-block-wrap border-success border-1 rounded-2 ">
-							<form method="POST" action="./addtocart.php">
+						<form method="POST" action="./addtocart.php">
+							<div class="Reveal-block-wrap border-success border-1 rounded-2 ">
+
 								<div class="Reveal-block-header">
 									<img class="card-img-top w-25 center" src="uploads/products/<?php echo $product['photo']; ?>" alt="" />
 									<h1 class="text-center"><?php echo $product['name']; ?></h1>
@@ -107,17 +108,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									<?php echo $product['description']; ?>
 								</div>
 								<div class="btn-group-sm d-flex justify-content-center m-auto mb-3 mt-5">
-									<input type="hidden" id="Item_name" class="Add_To_cart" value="<?php echo $product['name']; ?>">
-									<input type="hidden" id="price" class="Add_To_cart" value="<?php echo $product['price']; ?>">
-									<button type="submit" class="btn btn-success btn-outline-navigation text-white">
-										Add to cart
-									</button> <!-- </a> -->
 
+									<?php if (isset($_SESSION['username'])) {
+										echo '<button type="submit" name="Add_To_cart" class="btn btn-success btn-outline-navigation text-white">
+										Add to cart
+									</button>';
+									} else {
+										echo
+										"<script>alert('Please Login for purchase');window.location.href='./login.php';</script>";
+									}
+									?>
+									<input type="hidden" name="Item_name" value="<?php echo $product['name']; ?>">
+									<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
 
 								</div>
-							</form>
+						</form>
 
-							<!-- <div class="container">
+						<!-- <div class="container">
 								<form id="bidding_form" method="POST" class="edd_form">
 									<div class="elem-group">
 										<label for="name">Full Name</label>
@@ -131,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										<label for="phone">Your Phone</label>
 										<input type="tel" id="visitor_phone" class="form-control" name="visitor_phone" placeholder="9860232480" pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
 									</div> -->
-							<!-- <hr>
+						<!-- <hr>
 									<div class="elem-group inlined">
 										<label for="adult">Adults</label>
 										<input type="number" id="adult" class="form-control" name="total_adults" placeholder="2" min="1" required>
@@ -148,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										<label for="checkout-date">Check-out Date</label>
 										<input type="date" class="form-control" id="checkout-date" name="checkout" required>
 									</div> -->
-							<!-- <div class="elem-group">
+						<!-- <div class="elem-group">
 										<label for="room-selection">Type of Product</label>
 										<select id="room-selection" name="room_preference" class="form-control" required>
 											<option value="Vegetables">Vegetables</option>
@@ -158,24 +165,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										</select>
 									</div>
 									<hr> -->
-							<!-- <div class="elem-group">
+						<!-- <div class="elem-group">
 										<label for="message">Anything Else?</label>
 										<textarea id="message" class="form-control" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
 									</div> -->
-							<!-- <button type="submit">Reserve</button> -->
-							</form>
-
-
-						</div>
-
-						<hr>
-
-
-
+						<!-- <button type="submit">Reserve</button> -->
+						<!-- </form> -->
 					</div>
-
-
+					<hr>
 				</div>
+			</div>
 			</div>
 		</section>
 		<!-- Property Detail End -->
@@ -184,11 +183,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<?php } ?>
 
 	<?php include('includes/footer.php'); ?>
-
-
-	</div>
-
-
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->

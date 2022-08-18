@@ -1,10 +1,10 @@
 <?php
 session_start();
-$connection = mysqli_connect("localhost", "root", "", "db");
+include('./dbconn.php');
 if (mysqli_connect_error()) {
   echo "<script>
   alert('cannot connect to database');
-    window.location.href='mycart.php';
+    window.location.href='./mycart.php';
   </script>";
   exit();
 }
@@ -12,13 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")    //checking the server method is pos
 {
   if (isset($_POST['purchase']))   //checking make purchse button
   {
-    $query1 = "INSERT INTO order_manager`(Full_Name`, Phone_No, Address, Pay_Mod) VALUES ('$_POST[fullname]','$_POST[phone_no]','$_POST[address]','$_POST[pay_mode]')";
+    $query1 = "INSERT INTO order_manager(Full_Name, Phone_No, Address, Pay_Mod) VALUES ('$_POST[fullname]','$_POST[phone_no]','$_POST[address]','$_POST[pay_mode]')";
 
-    if (mysqli_query($connection, $query1)) {
+
+    if (mysqli_query($mysqli, $query1)) {
       //prepared statement -> creates templates    //preparing query once and executing it multiple times
-      $Order_Id = mysqli_insert_id($connection);
-      $query2 = "INSERT INTO user_orders`(Order_id`, Item_Name, Price, Quantity) VALUES (?,?,?,?)";
-      $stmt = mysqli_prepare($connection, $query2);
+      $Order_Id = mysqli_insert_id($mysqli);
+      $query2 = "INSERT INTO orders`(Order_id, Item_Name, Price, Quantity) VALUES ($sr,'$value[Item_name]','$value[price]','$_POST[Mod_Quantity]')";
+      $stmt = mysqli_prepare($mysqli, $query2);
       if ($stmt) {
         mysqli_stmt_bind_param($stmt, "isii", $Order_id, $Item_Name, $Price, $Quantity);       //binding the prepare statement with parameters '?''
         foreach ($_SESSION['cart'] as $key => $values) {
@@ -30,19 +31,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")    //checking the server method is pos
         unset($_SESSION['cart']);
         echo "<script>
   alert('Order Placed');
-    window.location.href='index.php';
+    window.location.href='./index.php';
   </script>";
       } else {
 
         echo "<script>
     alert('SQL query prepared error');
-      window.location.href='mycart.php';
+      window.location.href='./mycart.php';
     </script>";
       }
     } else { {
         echo "<script>
     alert('SQL error');
-      window.location.href='mycart.php';
+      window.location.href='./mycart.php';
     </script>";
       }
     }
