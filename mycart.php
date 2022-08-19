@@ -1,5 +1,6 @@
 <?php
 include("./includes/menu.php");
+include("./dbconn.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -18,18 +19,18 @@ include("./includes/menu.php");
 <body>
 
     <div class="container" style="font-family:'Loco',serif;">
-        <div class=" row">
+        <div class="row">
             <div class="col-lg-12 text-center text-white border rounded navigation my-5">
                 <h1>MY CART</h1>
             </div>
 
-            <div class="col-lg-9">
+            <div class="col-lg-9 font">
                 <table class="table">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">Serial No.</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Item Price</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
                             <th scope="col"></th>
@@ -41,61 +42,57 @@ include("./includes/menu.php");
                         if (isset($_SESSION['cart'])) {
                             foreach ($_SESSION['cart'] as $key => $value) {
                                 $sr = $key + 1;
-                                echo "
-      <tr>
-      <td>$sr</td>
-      <td>$value[Item_name]</td>
-      <td>$value[price]<input type='hidden' class='iprice' value='$value[price]'></td>
-      <td>
-      <form action='./addtocart.php' method='POST'>
-      <input class='text-center iquantity' name='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[Quantity]' min='1' max='12'></td>
-      <input type='hidden' name='Item_name' value='$value[Item_name]'>
-      </form>
-
-</td>
-      <td class='itotal'></td>
-      <td>
-      <form action='./addtocart.php' method='POST'>
-      <button name='Remove_Item' class='btn btn-sm btn-outline-danger'>REMOVE</button>
-      <input type='hidden' name='Item_name' value='$value[Item_name]'>
-      </form>
-      </td>
-      </tr>
-      ";
+                                echo "<tr>
+                                <td>$sr</td>
+                                <td>$value[Item_name]</td>
+                                <td>$value[price]<input type='hidden' class='iprice' value='$value[price]'></td>
+                                <td>
+                                <form action='./addtocart.php' method='POST'>
+                                <input class='text-center iquantity' name='Mod_Quantity' id='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[Quantity]' min='1' max='12'></td>
+                                <input type='hidden' name='Item_name' value='$value[Item_name]'>
+                                </form>
+                                </td>
+                                <td class='itotal'></td>
+                                <td>
+                                <form action='./addtocart.php' method='POST'>
+                                <button name='Remove_Item' class='btn btn-sm btn-outline-danger'>REMOVE</button>
+                                <input type='hidden' name='Item_name' value='$value[Item_name]'>
+                                </form>
+                                </td>
+                                </tr>";
                             }
                         }
                         ?>
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 font">
                 <div class="border border-success border-2 bg-light rounded p-4">
                     <h4>Grand Total:</h4>
-                    <h5 class="text-right" id="gtotal"></h5><br>
-
+                    <h5 class="text-right" id="gtotal"></h5>
                     <?php
                     if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
                     ?>
                         <!--customer details for payment -->
-                        <form action="./purchase.php" method="POST">
-                            <div class="form-group">
-                                <label>Full Name:</label>
-                                <input type="text" name="fullname" class="form-control" required>
-                            </div><br>
-                            <div class="form-group">
-                                <label>Phone Number:</label>
-                                <input type="number" name="phone_no" class="form-control" required>
-                            </div><br>
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" name="address" class="form-control" required>
-                            </div><br>
-                            <div class="form-check">
+                        <form action="./purchase.php" method="POST" class="my-0" enctype="multipart/form-data">
+                            <div class="form-group mt-3 mb-3">
+                                <b><label>Full Name:</label></b>
+                                <input type="text" name="fullname" id="fullname" placeholder="Full Name" class="form-control border-success" required>
+                            </div>
+                            <div class="form-group mt-3 mb-3">
+                                <b><label>Phone Number:</label></b>
+                                <input type="number" name="phone_no" id="phone_no" placeholder="Phone Number" class="form-control border-success" required>
+                            </div>
+                            <div class="form-group mt-3 mb-3">
+                                <b><label>Address</label></b>
+                                <input type="text" name="address" id="address" placeholder="Address" class="form-control border-success" required>
+                            </div>
+                            <div class="form-group mt-3 mb-3">
                                 <input class="form-check-input" type="radio" name="pay_mode" value="COD" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">Cash On Delivery
-                                </label>
-                            </div><br>
-                            <button class="btn btn-success btn-block" name="purchase">Buy Now</button>
+                                <b><label class="form-check-label" for="flexRadioDefault1">Cash On Delivery
+                                    </label></b>
+                            </div>
+                            <button class="btn btn-success m-auto d-flex justify-content-center" name="purchase">Purchase</button>
                         </form>
                     <?php
                     } ?>
@@ -125,7 +122,10 @@ include("./includes/menu.php");
         }
         subTotal();
     </script>
-    <br>
+    <?php
+    require './includes/footer.php';
+    ?>
+
 </body>
 
 </html>

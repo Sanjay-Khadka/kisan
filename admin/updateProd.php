@@ -16,8 +16,6 @@ $res = mysqli_fetch_array($q);
 include '../includes/aside.php'; ?>
 <?php
 session_start();
-// include_once("../functions.php");
-include_once("../func.php");
 ?>
 
 <!DOCTYPE html>

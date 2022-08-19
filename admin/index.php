@@ -10,7 +10,7 @@ if (isset($login)) {
     $row = mysqli_num_rows($que);
     if ($row) {
         $_SESSION['admin'] = $user;
-        header('location:add-product.php');
+        header('location:dashboard.php');
     } else {
         $err = "<font color='red'>Please check your user and password!!</font>";
     }
@@ -47,31 +47,26 @@ if (isset($login)) {
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-5 d-flex justify-content-center m-auto">
-                    <div class="card mb-5 wid text-black" style="border-radius: 25px;">
-                        <div class="border-2 card-body rounded-2">
-                            <img src="../image/kisanarea.png" width="37%" alt="KisanArea" class="center mt-3 ">
-                            <h3 class="text-success d-flex justify-content-center mt-2 mb-3 font">Admin KisanArea</h3>
+                    <div class="card mb-5 p-4 py-0 text-black w-75" style="border-radius: 25px;">
+                        <div class="border-2 card-body px-0 py-0 rounded-2">
+                            <img src="../image/kisanarea.png" width="40%" alt="KisanArea" class="center mt-3 ">
+                            <h4 class="text-success d-flex justify-content-center mt-2 mb-2 font">Admin</h4>
                             <form method="POST" class="mt-2">
                                 <fieldset>
                                     <div class="form-group">
-                                        <label for="username" class="mb-2"><b>Username</label>
+                                        <label for="username" class="mb-1"><b>Username</label>
                                         <span class="text-danger">*</span></b> <input class="form-control mb-2 border-success" name="user" type="text" required placeholder="Username">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="password" class="mb-2"><b>Password</label>
+                                    <div class="form-group mb-2">
+                                        <label for="password" class="mb-1"><b>Password</label>
                                         <span class="text-danger">*</span></b>
-                                        <input class="form-control mb-2 border-success" placeholder="Password" name="pass" type="password" required>
+                                        <input class="form-control mb-1 border-success" placeholder="Password" name="pass" type="password" required>
                                     </div>
 
-                                    <div class="form-group d-flex form-group justify-content-center mt-3">
-                                        <input name="login" type="submit" value="Login" class="d-flex justify-content-between mt-2 btn btn-success btn-block">
+                                    <div class="form-group d-flex form-group justify-content-center">
+                                        <input name="login" type="submit" value="Login" class="d-flex justify-content-between btn btn-success btn-block">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>
-                                            <?php echo @$err; ?>
-                                        </label>
-                                    </div>
+                                    <?php echo @$err; ?>
                                 </fieldset>
                             </form>
                         </div>

@@ -39,9 +39,9 @@ include 'dbconn.php';
     ?>
     <header class="bg-dark p-3">
         <div class="container my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">We Provide What You Need</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Welcome to KisanArea !!!</p>
+            <div class="text-center text-white font">
+                <h1 class="display-4 fw-bolder font">We Provide What You Need</h1>
+                <p class="lead fw-normal text-white-50 mb-0 font">Welcome to KisanArea !!!</p>
             </div>
         </div>
     </header>
@@ -55,9 +55,10 @@ include 'dbconn.php';
     <script src="js/scripts.js"></script>
     <script src="./js/cart.js"></script> <!-- util functions included in the CodyHouse framework -->
     <script src="./js/util.js"></script>
+    <?php
+    require './includes/footer.php';
+    ?>
 </body>
-<?php
-require './includes/footer.php';
-?>
+
 
 </html>

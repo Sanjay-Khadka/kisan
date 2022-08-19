@@ -32,13 +32,16 @@ if (empty($password)) {
     window.location.href='farmer.php'</script>";
 }
 
-$sql = "INSERT INTO users(fullname,email,username,password)
+$sql = "INSERT INTO alldetails(fullname,email,username,password)
     VALUES ('$fname','$email','$username',PASSWORD('$password'))";
 
+$sql1 = "INSERT INTO users(username,password) VALUES ('$username','$password')";
 if ($mysqli->query($sql) > 0) {
-    echo "<script>alert('Buyer Registered Successfully');
+    if ($mysqli->query($sql1) > 0) {
+        echo "<script>alert('User Registered Successfully');
     window.location.href='login.php'</script>";
+    }
 } else {
-    echo "<script>alert('Error while registering: ' . $mysqli->error;');
+    echo "<script>alert('Error while registering');
     </script>";
 }

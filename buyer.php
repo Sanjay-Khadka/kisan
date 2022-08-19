@@ -72,10 +72,10 @@
             </div>
         </div>
     </section>
+    <?php
+    require './includes/footer.php';
+    ?>
 
 </body>
-<?php
-require './includes/footer.php';
-?>
 
 </html>

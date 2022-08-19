@@ -23,7 +23,7 @@ $featuredAuctions = mysqli_query($mysqli, "SELECT * FROM products WHERE isActive
                     <div class="border-1 border-success card h-100 rounded-3">
                         <form action="" method="POST">
                             <!-- Product image-->
-                            <img class="card-img-top" src="admin-panel/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />
+                            <img class="card-img-top" src="admin/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

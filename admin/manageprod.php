@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../func.php");
+include '../dbconn.php';
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +64,6 @@ include_once("../func.php");
                 </div>
             </div>
 
-
             <?php
             $q = mysqli_query($mysqli, "SELECT * FROM products");
             $rr = mysqli_num_rows($q);
@@ -114,7 +113,10 @@ include_once("../func.php");
                 </table>
             <?php } ?>
         </section>
-
+        <footer class="d-flex justify-content-center mt-5">
+            <strong>Copyright &copy; 2022
+                <a href="#">KisanArea</a>.</strong>
+        </footer>
     </div>
 
     <?php
@@ -129,9 +131,6 @@ include_once("../func.php");
         }
     </script>
 </body>
-<footer class="d-flex justify-content-center mt-5">
-    <strong>Copyright &copy; 2022
-        <a href="#">KisanArea</a>.</strong>
-</footer>
+
 
 </html>

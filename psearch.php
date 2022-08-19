@@ -81,10 +81,10 @@ include('./dbconn.php');
             </div>
         </div>
     </div>
-</body>
 
-<?php
-require './includes/footer.php';
-?>
+    <?php
+    require './includes/footer.php';
+    ?>
+</body>
 
 </html>

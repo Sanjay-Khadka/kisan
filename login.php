@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class=" text-white">
-                                    <button class="d-flex m-auto justify-content-center btn btn-success form group mt-3">Login</button>
+                                    <button name="login" id="login" class="d-flex m-auto justify-content-center btn btn-success form group mt-3">Login</button>
                                     <span class="text-success form-submitted"></span>
                                 </div>
                                 <div class="form-group d-flex justify-content-center mt-3 mb-2">
@@ -60,11 +60,11 @@
             </div>
         </div>
     </section>
+    <?php
+    require './includes/footer.php';
+    ?>
 
 </body>
 
-<?php
-require './includes/footer.php';
-?>
 
 </html>

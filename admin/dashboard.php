@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../func.php");
+include '../dbconn.php';
 ?>
 
 <!DOCTYPE html>

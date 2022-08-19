@@ -4,4 +4,4 @@ $pid = $_GET['id'];
 
 $q = mysqli_query($mysqli, "delete from products where productid='$pid'");
 
-header('location:add-product.php?page=notification');
+header('location:manageProd.php?page=notification');

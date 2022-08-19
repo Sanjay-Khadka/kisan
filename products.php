@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<?php while ($product = mysqli_fetch_array($productDetail)) { ?>
 
 		<header class="bg-dark p-3">
-			<div class="container my-5">
+			<div class="container my-3">
 				<div class="text-center text-white">
 					<h1 class="display-4 fw-bolder"><?php echo $product['name']; ?></h1>
 					<!-- <p class="lead fw-normal text-white-50 mb-0">Welcome to KisanArea !!!</p> -->
@@ -74,60 +74,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</header>
 		<!-- Section-->
 
-		<!-- Start Banner  -->
-		<section class="page-title-banner" id="exhibitorBanner" style="background-image:url(upload/products/no-image-product.jpg);padding:10px;">
-			<div class="container">
-				<div class="row m-0 align-items-end detail-swap">
-					<div class="tr-list-wrap">
-						<!-- Begin  Content -->
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--  End Banner -->
-
 		<!-- Property Detail Start  -->
-		<section class="gray">
+		<section class="">
 			<div class="container">
-				<div class="row">
-
-					<!-- property main detail -->
-					<div class="col">
-
-						<!-- Single Block Wrap -->
-						<form method="POST" action="./addtocart.php">
-							<div class="Reveal-block-wrap border-success border-1 rounded-2 ">
-
-								<div class="Reveal-block-header">
-									<img class="card-img-top w-25 center" src="uploads/products/<?php echo $product['photo']; ?>" alt="" />
+				<div class="d-flex justify-content-center align-items-center">
+					<div class="col-5 d-flex justify-content-center m-auto">
+						<div class="card mb-5 mt-5 wid text-black border-success" style="border-radius: 25px;">
+							<div class="card-body">
+								<form method="POST" action="./addtocart.php">
+									<img class="card-img-top center" width="45%" style="border-radius: 25px;" src="uploads/products/<?php echo $product['photo']; ?>" alt="" />
 									<h1 class="text-center"><?php echo $product['name']; ?></h1>
 									<h4 class="text-center">Rs. <?php echo $product['price']; ?></h4>
-								</div>
 
-								<div class="text-center Reveal-block-body">
-									<?php echo $product['description']; ?>
-								</div>
-								<div class="btn-group-sm d-flex justify-content-center m-auto mb-3 mt-5">
 
-									<?php if (isset($_SESSION['username'])) {
-										echo '<button type="submit" name="Add_To_cart" class="btn btn-success btn-outline-navigation text-white">
+									<div class="text-center Reveal-block-body">
+										<?php echo $product['shortdescription']; ?>
+									</div>
+									<div class="d-flex justify-content-center m-auto mb-3 mt-5">
+
+										<?php if (isset($_SESSION['username'])) {
+											echo '<button type="submit" name="Add_To_cart" class="btn btn-success btn-outline-navigation text-white">
 										Add to cart
 									</button>';
-									} else {
-										echo
-										"<script>alert('Please Login for purchase');window.location.href='./login.php';</script>";
-									}
-									?>
-									<input type="hidden" name="Item_name" value="<?php echo $product['name']; ?>">
-									<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
+										} else {
+											echo
+											"<script>alert('Please Login for purchase');window.location.href='./login.php';</script>";
+										}
+										?>
+										<input type="hidden" name="Item_name" value="<?php echo $product['name']; ?>">
+										<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
 
-								</div>
+									</div>
 							</div>
-						</form>
+							</form>
+						</div>
+						<hr>
 					</div>
-					<hr>
 				</div>
-			</div>
 		</section>
 
 	<?php } ?>

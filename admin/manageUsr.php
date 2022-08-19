@@ -1,7 +1,6 @@
 <?php
 session_start();
-// include_once("../functions.php");
-include_once("../func.php");
+include '../dbconn.php';
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +65,7 @@ include_once("../func.php");
 
 
                 <?php
-                $q = mysqli_query($mysqli, "SELECT * FROM users");
+                $q = mysqli_query($mysqli, "SELECT * FROM alldetails");
                 $rr = mysqli_num_rows($q);
                 if (!$rr) {
                     echo "<h2 style='color:red'>No any user exists !!!</h2>";
@@ -75,7 +74,7 @@ include_once("../func.php");
                     <script>
                         function DeleteUser(id) {
                             if (confirm("Do you want to delete this user?")) {
-                                alert("User deleted successfully!")
+                                alert("User Deleted Successfully")
                                 window.location.href = "deleteUsr.php?id=" + id;
                             }
                         }

@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once("../db-config.php");
+include_once("../dbconn.php");
 // include_once("../functions.php");
-include_once("../func.php");
+
 
 // $username = $_SESSION["email"];
 // $userID = $_SESSION["userid"];
@@ -14,8 +14,6 @@ include_once("../func.php");
 // $user_role = $_SESSION["user_role"];
 
 // $exhibitorID = (string)$_GET['eid'];
-
-$message = "";
 
 // $slug = (string)$_GET['name'];
 // $pid = (string)$_GET['pid'];
@@ -66,24 +64,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target_path)) {
-      echo "File uploaded successfully!";
+      '<script>console.log("File uploaded successfully!");</script>';
     } else {
-      echo "Sorry, file not uploaded, please try again!";
+      '<script>console.log("Sorry, file not uploaded, please try again!");</script>';
     }
     // Code to Upload Files
 
-    $insertData = mysqli_query($mysqli, "INSERT INTO products (name,photo,shortdescription,description,price) values ('$name','$photo','$shortdesc','$description','$price')");
+    $query = mysqli_query($mysqli, "INSERT INTO products (name,photo,shortdescription,description,price) values ('$name','$photo','$shortdesc','$description','$price')");
   } catch (Exception $e) {
     $message = 'Unable to add new product.' . $e;
     throw new Exception('Unable to save details. Please try again later.', 0, $e);
   }
 
-  if (!$insertData) {
-    $message = 'Couldnot save data..' . $e;
-    echo 'mysqli_error()';
+  if ($mysqli->affected_rows == 1) {
+    echo '<script>alert("Product Added Successfully");</script>';
+    header("Location:../admin/add-product.php");
   } else {
-    echo "<script>alert('Product added successfully');</script>";
-    header("Location:../admin-panel/add-product.php");
+    echo '<script>alert("Couldnot Add Product");</script>';
   }
 }
 ?>
@@ -296,7 +293,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <!-- /.card-header -->
         <div class="card-body font">
-          <form method="POST" id="ProductDetails" enctype="multipart/form-data" onsubmit="">
+          <form method="POST" id="ProductDetails" enctype="multipart/form-data">
             <div class="form-row">
               <div class="form-group col-md-6 col-lg-6">
                 <label>Product Name</label>
@@ -360,13 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <div class="form-group col-md-12">
                 <input type="submit" value="ADD" name="submit_prod" id="submit" class="btn btn-success" />
                 <input type="reset" value="RESET" name="" id="submit" class="btn btn-secondary" />
-                <?php
-                if (isset($_POST['submit_prod'])) {
-                  echo '<script>
-                  alert("Product Added Successfully.");
-                  </script>';
-                }
-                ?>
+
               </div>
             </div>
 

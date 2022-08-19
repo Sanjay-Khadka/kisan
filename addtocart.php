@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_SESSION['cart'][0] = array('Item_name' => $_POST['Item_name'], 'price' => $_POST['price'], 'Quantity' => 1);
             echo "<script>
-    alert('Product added to the cart.');
+    alert('Product added to the cart');
     window.location.href='./index.php';
     </script>";
         }
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 unset($_SESSION['cart'][$key]);               //removes home
                 $_SESSION['cart'] = array_values($_SESSION['cart']);   //rearrange array after removing any item
                 echo "<script>
-      alert('Item Removed from the cart.');
+      alert('Product Removed from the cart');
       window.location.href='./mycart.php';
       </script>";
             }
@@ -52,10 +52,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-}
-
-function generateOrderCode()
-{
-    $last = "select *from getLastRecord ORDER BY id DESC LIMIT 1";
-    $last++;
 }
