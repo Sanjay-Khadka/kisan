@@ -35,6 +35,7 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
     </header>
+
     <div>
         <img src="./image/image (4).jpg" class="container d-flex img-fluid mb-5 mt-5" width="100%">
     </div>

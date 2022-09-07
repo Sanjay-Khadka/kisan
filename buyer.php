@@ -18,7 +18,7 @@
 
 </head>
 
-<body background="./image/a.jpg">
+<body class="bg-dark">
     <?php
     require './includes/menu.php';
     ?>
@@ -27,33 +27,29 @@
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-5 d-flex justify-content-center m-auto">
-                    <div class="card mb-5 mt-5 wid text-black" style="border-radius: 25px;">
+                    <div class="card mb-5 mt-5 wid text-black border-2 border-success" style="border-radius: 25px;">
                         <div class="card-body">
                             <form action="./regbuyer.php" name="form" class="mx-1 mx-md-4" id="form" method="POST" enctype="multipart/form-data">
                                 <img src="./image/kisanarea.png" width="45%" alt="Kisan Area" class="center">
                                 <h5 class="text-success d-flex justify-content-center mt-2 mb-4">Sign up as buyer</h5>
 
                                 <div class="form-group mb-3">
-                                    <!-- <label class="form-label" for="fname">Name:<span class="text-danger">*</span></label> -->
                                     <input type="text" name="fname" id="fname" placeholder="Name" class="form-control border-success" />
                                     <span class="text-danger fname-not-found mt-2"></span>
                                 </div>
 
 
                                 <div class="form-group mb-3">
-                                    <!-- <label class="form-label" for="">Email:<span class="text-danger">*</span></label> -->
                                     <input type="email" name="email" id="email" class="form-control border-success" placeholder="E-mail" />
                                     <span class="text-danger email-not-found"></span>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <!-- <label class="form-label" for="">Username:<span class="text-danger">*</span></label> -->
                                     <input type="username" name="username" id="username" class="form-control border-success" placeholder="Username" />
                                     <span class="text-danger username-not-found"></span>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <!-- <label class="form-label" for="password">Password:<span class="text-danger">*</span></label> -->
                                     <input type="password" name="password" id="password" placeholder="Password" class="form-control border-success" />
                                     <span class="text-danger password-not-found"></span>
                                 </div>

@@ -12,7 +12,7 @@ if (isset($update)) {
 	</script>';
 }
 
-//select old notice
+//select old product
 
 $q = mysqli_query($mysqli, "SELECT * FROM products WHERE productid='" . $_GET['pid'] . "'");
 $res = mysqli_fetch_array($q);
@@ -35,6 +35,8 @@ include '../includes/aside.php'; ?>
 	<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/bootstrap.css" />
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+
 	<!-- daterange picker -->
 	<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
 	<!-- iCheck for checkboxes and radio inputs -->

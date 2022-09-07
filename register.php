@@ -25,27 +25,25 @@ if (!isset($_SESSION['username'])) {
 
 </head>
 
-<body background="./image/a.jpg">
-
+<body class="bg-dark">
     <?php
     require './includes/menu.php';
     ?>
     <section class="p-0 font">
-        <div class="container d-flex justify-content-center p-5 ">
-            <div class="col-10 row ">
-
+        <div class="container d-flex justify-content-center p-5">
+            <div class="col-6 row">
                 <div class="col d-flex justify-content-center py-4 zoom">
-                    <div class="card h-100 w-75x mx-5">
-                        <h3 class="center mt-3 mb-3">Sign Up:</h3>
+                    <div class="card h-100 mx-5 w-50 border-2 border-success" style="border-radius: 25px;">
+                        <h4 class="center mt-3 mb-3 fw-bolder">Sign Up</h4>
                         <img class="card-img-top img center w-50" src="./image/cartg.png" width="50%" />
-                        <div class="card-body p-4">
+                        <div class="card-body">
                             <div class="text-center">
                                 <h5 class="fw-bolder">KisanArea</h5>
                             </div>
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a href="./farmer.php" class="btn btn-outline-dark mt-auto">Continue</a>
+                                <a href="./buyer.php" class="btn btn-outline-dark btn-sm mt-auto fw-bold">Continue</a>
                             </div>
                         </div>
                     </div>

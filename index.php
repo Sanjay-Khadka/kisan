@@ -6,8 +6,6 @@ if (!isset($_SESSION['username'])) {
     ++$_SESSION['count'];
 }
 
-// echo $_SESSION['count'];
-
 include './includes/dbconn.php';
 ?>
 

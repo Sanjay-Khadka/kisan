@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/bootstrap.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
   <!-- daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
   <!-- iCheck for checkboxes and radio inputs -->
@@ -140,11 +141,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class=" form-group col-md-8 col-lg-12">
               <label>Product Description:</label>
               <textarea name="description" id="description" cols="10" rows="5" class="form-control border-1 border-secondary" required placeholder="Product Description"></textarea>
-            </div>
-
-            <div class="form-group col-md-8 col-lg-12">
-              <label>Features</label>
-              <textarea name="features" id="features" cols="10" rows="5" class="form-control border-1 border-secondary" required placeholder="Features"></textarea>
             </div>
 
             <div class="form-group col-sm-4">

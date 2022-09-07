@@ -6,14 +6,11 @@ if (isset($_POST['username']) && $_POST['password']) {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-}
-if (empty($fname && $email && $username && $password)) {
-    echo "<script>alert('Please fill up the form');
-    window.location.href='buyer.php'</script>";
+    $address = $_POST['address'];
 }
 
 $sql = "INSERT INTO alldetails(fullname,email,username,password)
-    VALUES ('$fname','$email','$username',PASSWORD('$password'))";
+    VALUES ('$fname','$email','$username','$password')";
 
 $sql1 = "INSERT INTO users(username,password) VALUES ('$username','$password')";
 if ($mysqli->query($sql) > 0) {

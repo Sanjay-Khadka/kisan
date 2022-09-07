@@ -17,6 +17,8 @@ include '../includes/dbconn.php';
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/bootstrap.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+
   <!-- daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
   <!-- iCheck for checkboxes and radio inputs -->

@@ -13,16 +13,16 @@
 
 </head>
 
-<body background="./image/a.jpg">
+<body class="bg-dark">
 
     <?php
     require './includes/menu.php';
     ?>
     <section class="">
         <div class="container">
-            <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center border-2 border-success">
                 <div class="col-5 d-flex justify-content-center m-auto">
-                    <div class="card mb-5 mt-5 wid text-black" style="border-radius: 25px;">
+                    <div class="card mb-5 mt-5 wid text-black border-2 border-success" style="border-radius: 25px;">
                         <div class="card-body">
                             <!-- <div class="container border border-success border-5 rounded"> -->
                             <form action="./logdb.php" name="form" class="mx-1 mx-md-4" id="form" method="POST" enctype="multipart/form-data">

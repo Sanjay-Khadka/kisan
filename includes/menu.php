@@ -28,7 +28,8 @@ session_start();
                         <li class="nav-item">
                             <?php if (isset($_SESSION['username'])) {
                                 echo
-                                '<a class="nav-link a text-light px-4"><b class="hov"><i class="bi bi-person"></i>' . " " . $_SESSION['username'];
+                                '<a class="nav-link text-light px-4">
+                                <b class="hov"><i class="bi bi-person"></i>' . " " . $_SESSION['username'];
                                 '</b></a>';
                             } else {
                                 echo '<a class="nav-link a text-light px-4 " href="./register.php"><b class="hov">Register</b></a>';
@@ -40,7 +41,15 @@ session_start();
                         <li class="nav-item">
                             <!-- <a class="nav-link a text-light px-4" href="./logout.php"><b class=" hov"> -->
                             <?php if (isset($_SESSION['username'])) {
-                                echo '<a class="nav-link a text-light px-4 " href="./logout.php"><b class="hov"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</b></a>';
+                                echo '<div class="dropdown">
+                                <a class="border-success nav-link text-light font" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b class="hov"><i class="bi bi-gear"></i></b>
+                                </a>
+                                <div class="dropdown-menu border-success" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="./useredit.php"><i class="fa fa-pencil-square-o"></i>Edit Profile</a>
+                                    <a class="dropdown-item" href="./logout.php"><i class="fa fa-sign-out"></i>Logout</a>
+                                </div>
+                            </div>';
                             } else {
                                 echo '<a class="nav-link a text-light px-4" href="./login.php"><b class="hov">Login</b></a>';
                             }
@@ -48,6 +57,12 @@ session_start();
                             </b></a>
                         </li>
 
+                        <li>
+                            <?php if (isset($_SESSION['username'])) {
+                                echo '';
+                            }
+                            ?>
+                        </li>
                         <li class="nav-item mx-4">
                             <form class="d-flex">
                                 <?php

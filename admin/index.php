@@ -30,24 +30,24 @@ if (isset($login)) {
     <link rel="stylesheet" href="../css/style.css">
 
 
-<body class="bg-dark">
+<body class="bg-dark font">
 
-    <section class="bg-dark">
+    <section class="mt-5">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-5 d-flex justify-content-center m-auto">
-                    <div class=" d-flex justify-content-center mb-3 mt-5 wid text-white" style="border-radius: 25px;">
+                    <div class="d-flex justify-content-center mb-3 mt-5 wid text-white" style="border-radius: 25px;">
                         <h3><a href="#" class="nav-link text-white"><b class="hov">Admin Login</b></a></h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="bg-dark">
+    <section class="">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-5 d-flex justify-content-center m-auto">
-                    <div class="card mb-5 p-4 py-0 text-black w-75" style="border-radius: 25px;">
+                    <div class="card mb-5 p-4 py-0 text-black w-75 border-2 border-success" style="border-radius: 25px;">
                         <div class="border-2 card-body px-0 py-0 rounded-2">
                             <img src="../image/kisanarea.png" width="40%" alt="KisanArea" class="center mt-3 ">
                             <h4 class="text-success d-flex justify-content-center mt-2 mb-2 font">Admin</h4>
