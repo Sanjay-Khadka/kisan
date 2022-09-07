@@ -1,6 +1,5 @@
 <?php
 session_start();
-// $isUserLoggedIn = ($_SESSION['username'] == '') ? false : true;
 ?>
 
 <header id="header">
@@ -13,7 +12,7 @@ session_start();
                 </div>
             </div>
             <div class="container w-75" style="font-family:'Lora', serif; font-size:14px;">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -21,6 +20,7 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link active text-light px-4" aria-current="page" href="./index.php"><b class="hov">Home</b></a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-light px-4" href="./about.php"> <b class="hov">About</b></a>
                         </li>
@@ -33,15 +33,9 @@ session_start();
                             } else {
                                 echo '<a class="nav-link a text-light px-4 " href="./register.php"><b class="hov">Register</b></a>';
                             }
-
                             ?>
                             </b></a>
                         </li>
-                        <!-- <li class="nav-item">
-							<a class="nav-link a text-light px-4 " href="./login.php"><b class="hov">Login</b></a>
-						</li> -->
-                        <!-- <a class="nav-link a text-light px-4"><b class="hov"><i class="bi bi-person"></i>' . " " . $_SESSION['username'];
-                                '</b></a>' -->
 
                         <li class="nav-item">
                             <!-- <a class="nav-link a text-light px-4" href="./logout.php"><b class=" hov"> -->
@@ -53,7 +47,6 @@ session_start();
                             ?>
                             </b></a>
                         </li>
-                        <!-- <a class="nav-link a text-light px-4 " href="./admin-panel/add-product.php"><b class="hov">Welcome /b></a> -->
 
                         <li class="nav-item mx-4">
                             <form class="d-flex">
@@ -78,12 +71,3 @@ session_start();
         </div>
     </nav>
 </header>
-<!-- <script>
-    var checkLogin = <?php $isUserLoggedIn; ?>
-
-    if (checkLogin == true) {
-        console.log("User Logged in");
-    } else {
-        document.getElementById("addtocartbtn").disabled = true;
-    }
-</script> -->

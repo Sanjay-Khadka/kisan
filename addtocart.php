@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['cart'][$count] = array('Item_name' => $_POST['Item_name'], 'price' => $_POST['price'], 'Quantity' => 1);
 
                 // DB Insert Code
-                echo "<script> alert('Product added successfully');
+                echo "<script> alert('Product added to the cart');
       window.location.href='./mycart.php';
       </script>";
             }

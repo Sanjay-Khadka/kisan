@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Signup Buyer | KisanArea</title>
+    <title>Signup Farmer | KisanArea</title>
     <!-- Website Logo -->
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png" />
     <!-- Bootstrap icons-->
@@ -29,9 +29,9 @@
                 <div class="col-5 d-flex justify-content-center m-auto">
                     <div class="card mb-5 mt-5 wid text-black" style="border-radius: 25px;">
                         <div class="card-body">
-                            <form action="./regbuyer.php" name="form" class="mx-1 mx-md-4" id="form" method="POST" enctype="multipart/form-data">
+                            <form action="./regfarmer.php" name="form" class="mx-1 mx-md-4" id="form" method="POST" enctype="multipart/form-data">
                                 <img src="./image/kisanarea.png" width="45%" alt="Kisan Area" class="center">
-                                <h5 class="text-success d-flex justify-content-center mt-2 mb-4">Sign up as buyer</h5>
+                                <h5 class="text-success d-flex justify-content-center mt-2 mb-4">Sign up as farmer</h5>
 
                                 <div class="form-group mb-3">
                                     <!-- <label class="form-label" for="fname">Name:<span class="text-danger">*</span></label> -->

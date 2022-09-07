@@ -1,10 +1,10 @@
 <?php
-include('./dbconn.php');
+include('./includes/dbconn.php');
 ?>
 <html lang="en">
 
 <head>
-    <title>Search | KisanArea</title>
+    <title>KisanArea | Search</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <!-- <script src="./js/validate.js"></script> -->
     <!-- Website Logo -->
@@ -37,26 +37,43 @@ include('./dbconn.php');
                     <tbody>
                         <form method="POST" action="./addtocart.php">
                             <?php
-                            $con = mysqli_connect("localhost", "root", "", "kisanarea");
+                            $mysqli = mysqli_connect("localhost", "root", "", "kisanarea");
 
                             if (isset($_GET['search'])) {
                                 $filtervalues = $_GET['search'];
                                 $query = "SELECT * FROM products WHERE CONCAT(name) LIKE '%$filtervalues%' ";
-                                $query_run = mysqli_query($con, $query);
+                                $query_run = mysqli_query($mysqli, $query);
 
                                 if (mysqli_num_rows($query_run) > 0) {
                                     foreach ($query_run as $featuredProd) {
                             ?>
 
                                         <tr>
-                                            <td class="w-25 "><img class=" card-img-top img-fluid img-thumbnail w-50"" src=" admin-panel/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />
+                                            <td class="w-25 "><img class=" card-img-top img-fluid img-thumbnail w-50" src="admin/uploads/products/<?php echo $featuredProd['photo']; ?>" alt="" />
                                             </td>
                                             <td><?= $featuredProd['name']; ?></td>
                                             <td><?= $featuredProd['description']; ?></td>
                                             <td><?= $featuredProd['price']; ?></td>
-                                            <td><button type="submit" href="" name="Add_To_cart" class="btn btn-success btn-outline-navigation text-white">
+                                            <td><?php if (isset($_SESSION['username'])) {
+                                                    echo '<button type="submit" name="Add_To_cart" class="btn btn navigation text-white">
+										Add to cart
+									</button>';
+                                                } else {
+                                                    echo
+                                                    '<a href="./login.php" name="" class="btn navigation text-white">
+										Please Login
+									</a>';
+                                                }
+                                                ?>
+
+
+                                                <!-- <button type="submit" name="Add_To_cart" class="btn btn navigation text-white">
                                                     Add to cart
-                                                </button>
+                                                </button> -->
+                                                <input type="hidden" name="Item_name" value="<?php echo $featuredProd['name']; ?>">
+                                                <input type="hidden" name="price" value="<?php echo $featuredProd['price']; ?>">
+
+
                                             </td>
                                         </tr>
                                     <?php
@@ -68,14 +85,13 @@ include('./dbconn.php');
                                         <td colspan="5">No Records Found</td>
                                     </tr>
                             <?php
-
                                 }
                             }
 
                             ?>
-                            <input type="hidden" name="Item_name" value="<?php echo $products['name']; ?>">
-                            <input type="hidden" name="price" value="<?php echo $products['price']; ?>">
+
                         </form>
+
                     </tbody>
                 </table>
             </div>

@@ -1,5 +1,5 @@
 <?php
-include('./dbconn.php');
+include('./includes/dbconn.php');
 
 $productid = $_GET['pid'];
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>KisanArea/Product Info</title>
+	<title>KisanArea | Product Info</title>
 	<!-- Website Logo-->
 	<link rel="icon" type="image/x-icon" href="./image/Sawari.png" />
 	<!-- Bootstrap icons-->
@@ -88,25 +88,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 									<div class="text-center Reveal-block-body">
-										<?php echo $product['shortdescription']; ?>
+										<h4><?php echo $product['shortdescription']; ?></h4>
+									</div>
+									<div class="text-center Reveal-block-body">
+										<h5><?php echo $product['description']; ?></h5>
 									</div>
 									<div class="d-flex justify-content-center m-auto mb-3 mt-5">
 
 										<?php if (isset($_SESSION['username'])) {
-											echo '<button type="submit" name="Add_To_cart" class="btn btn-success btn-outline-navigation text-white">
+											echo '<button type="submit" name="Add_To_cart" class="btn btn navigation text-white">
 										Add to cart
 									</button>';
 										} else {
 											echo
-											"<script>alert('Please Login for purchase');window.location.href='./login.php';</script>";
+											'<a href="./login.php" name="" class="btn navigation text-white">
+										Please Login
+									</a>';
 										}
 										?>
 										<input type="hidden" name="Item_name" value="<?php echo $product['name']; ?>">
 										<input type="hidden" name="price" value="<?php echo $product['price']; ?>">
 
 									</div>
+								</form>
 							</div>
-							</form>
 						</div>
 						<hr>
 					</div>
@@ -119,9 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
-	<script src="./js/cart.js"></script> <!-- util functions included in the CodyHouse framework -->
-	<script src="./js/util.js"></script>
 
 </body>
 

@@ -1,22 +1,24 @@
 <?php
-include "../dbconn.php";
+include '../includes/dbconn.php';
+session_start();
+
 extract($_POST);
 if (isset($update)) {
-	mysqli_query($mysqli, "UPDATE products set price='$price',shortdescription='$shortdescription', description='$description' where productid='" . $_GET['pid'] . "'");
+	mysqli_query($mysqli, "UPDATE products SET price='$price',shortdescription='$shortdescription', description='$description' where productid='" . $_GET['pid'] . "'");
 	$err = "<font color='blue'>Product updated </font>";
+	echo '<script>
+	alert("Product Updated");
+	window.location.href="manageProd.php";
+	</script>';
 }
 
 //select old notice
 
-$q = mysqli_query($mysqli, "select * from products where productid='" . $_GET['pid'] . "'");
+$q = mysqli_query($mysqli, "SELECT * FROM products WHERE productid='" . $_GET['pid'] . "'");
 $res = mysqli_fetch_array($q);
-
 ?>
 <?php
 include '../includes/aside.php'; ?>
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,7 @@ session_start();
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>KisanArea | Update User</title>
+	<title>KisanArea | Update Product</title>
 	<link rel="icon" type="image/x-icon" href="../image/kisanarea.png" />
 
 	<!-- Google Font: Source Sans Pro -->

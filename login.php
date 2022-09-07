@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    <title>Login | KisanArea</title>
+    <title>KisanArea | Login</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <!-- <script src="./js/validate.js"></script> -->
     <!-- Website Logo -->
@@ -13,12 +13,12 @@
 
 </head>
 
-<body>
+<body background="./image/a.jpg">
 
     <?php
     require './includes/menu.php';
     ?>
-    <section class="bg-dark">
+    <section class="">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-5 d-flex justify-content-center m-auto">
@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class=" text-white">
-                                    <button name="login" id="login" class="d-flex m-auto justify-content-center btn btn-success form group mt-3">Login</button>
+                                    <button name="login" id="login" class="d-flex m-auto justify-content-center btn navigation text-white form group mt-3">Login</button>
                                     <span class="text-success form-submitted"></span>
                                 </div>
                                 <div class="form-group d-flex justify-content-center mt-3 mb-2">

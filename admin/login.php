@@ -6,7 +6,7 @@ extract($_POST);
 if (isset($login)) {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $query = mysqli_query($mysqli, "SELECT * FROM users WHERE username='$username' AND password='$password'");
+    $query = mysqli_query($mysqli, "SELECT * FROM admin WHERE user='$username' AND pass='$password'");
     $row = mysqli_num_rows($query);
     if ($row) {
         session_start();

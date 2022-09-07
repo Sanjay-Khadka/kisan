@@ -9,17 +9,17 @@ if (isset($_POST['username']) && $_POST['password']) {
 }
 if (empty($fname && $email && $username && $password)) {
     echo "<script>alert('Please fill up the form');
-    window.location.href='buyer.php'</script>";
+    window.location.href='farmer.php'</script>";
 }
 
-$sql = "INSERT INTO alldetails(fullname,email,username,password)
+$sql = "INSERT INTO farmers(fullname,email,username,password)
     VALUES ('$fname','$email','$username',PASSWORD('$password'))";
 
-$sql1 = "INSERT INTO users(username,password) VALUES ('$username','$password')";
+$sql1 = "INSERT INTO admin(user,pass) VALUES ('$username','$password')";
 if ($mysqli->query($sql) > 0) {
     if ($mysqli->query($sql1) > 0) {
-        echo "<script>alert('User Registered Successfully');
-    window.location.href='login.php'</script>";
+        echo "<script>alert('Farmer Registered Successfully');
+    window.location.href='./admin/index.php'</script>";
     }
 } else {
     echo "<script>alert('Error while registering');

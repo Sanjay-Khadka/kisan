@@ -20,3 +20,7 @@ if ($connection->query($sql)) {
 } else {
     echo "Error Creating Database: " . $connection->connect_error;
 }
+// $sql="UPDATE nischal_tbl SET username='nischal' where sid=1";
+// $sql="SELECT * from users";
+// $sql="DELETE from users where pid = 1";
+// $sql = "INSERT INTO users VALUES 1,'Nischal','9805940865',21";

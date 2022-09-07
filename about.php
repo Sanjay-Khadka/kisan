@@ -13,6 +13,7 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Website Logo -->
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -30,44 +31,53 @@ if (!isset($_SESSION['username'])) {
         <div class="container my-4">
             <div class="text-center text-white">
                 <h1 class="display-3 fw-bolder">About Us</h1>
-                <h4>We provide a platform for farmers and buyers to easily communicate to each other.</h4>
-                <p>Easy to buy, Easy to sell !!!</p>
+                <h5 class="mt-4">Easy to buy, Easy to sell !!!</h5>
             </div>
         </div>
     </header>
     <div>
         <img src="./image/image (4).jpg" class="container d-flex img-fluid mb-5 mt-5" width="100%">
     </div>
-    <section class="section section--no-pb">
-        <div class="container">
+
+    <section class="section mb-3 ">
+        <div class="container ">
             <div>
                 <div class="d-flex justify-content-center font">
-                    <h2>Who We Are</h2>
-
-                    <!-- <h4>
-                      Smells racy free announcing than durable zesty smart exotic
-                      far feel. Screamin' affordable secret way absolutely.
-                    </h4> -->
+                    <h2 class="mb-4">Who We Are ?</h2>
                 </div>
+
                 <h4>
                     The Scenario
                 </h4>
-                <p>
-                    Nepal has an immense diversity in terms of geographic, topographic and climatic conditions. However, intervention to increase crop productivity with pest/diseases control, randomly promote cash crop and over utilization of fertilizer are not sufficient in the context of changing climate, population growth and degradation of resources. More specifically and importantly, information such as bio-physical, climatic and agro economic information are useful but contextualize them to get the relevant information is harder to find.
+                <p class="">
+                    Today, there are more than 750 million farms globally, and the families of farmers operate them.
+                    With so many farmers engaged in the farming industry, we will get food. Still, it is different
+                    for the families dependent on farming for their livelihoods. To battle such competition in
+                    agriculture farmers can use online farming app.A farmers’ assistance web application (KisanArea)
+                    is one of the web applications that is built to help the farmer to ensure greater profitability
+                    through direct communication of farmer to supplier and farmer to farmer. The KisanArea helps to
+                    connect agricultural producers and provide them with shared knowledge. Spreading agricultural
+                    related information to farmers in the poorest communities made easier with the help of Kisan Area.
                 </p>
                 <h4>Solution</h4>
-                <p>GeoKrishi&nbsp;provides an intelligent digital agriculture platform built to solve challenges faced by commercial and smallholder farmers. GeoKrishi applies a data-driven system approach to translate knowledge into actionable, timely and context-specific advisories, covering all stages of the crop value chain.&nbsp;</p>
-                <h4>For Whom?</h4>
-                <p>Are you a Municipalities, farmer’s cooperative, part of a social group or a civil society, an agribusiness or Local extension service providers, local farm based SME’s, who faces obstacles in delivering value added services to farmer’s in their work due to lack of information delivering and the right monitoring, Evaluation and communication tools.</p>
+                <p class="text-justify">KisanArea provides an intelligent digital agriculture platform built to solve challenges faced by commercial and smallholder farmers. Kishan Area helps in transmitting information related to farming and make a connectivity between the experts and farmers. KisanArea also helps in scheduling the farming activities timely.</p>
+
                 <h4>Mission</h4>
                 <p>
-                    To&nbsp;accelerate sustainable agriculture development via empowering farmers and local service providers, create green jobs, and build a network of the next-generation Agri-prenuers.
+                    The Mission of ‘Kisan Area’ is to use all available information and expertise to enable the automation of sustainable process in farming.
                 </p>
                 <h4>Objectives</h4>
                 <ul>
-                    <li style="list-style: disc; list-style-position: inside;">Establish agricultural data infrastructure incorporating several data, products and tools useful for overall agricultural stages.</li>
-                    <li style="list-style: disc; list-style-position: inside;">Remove technical and cultural barrier in the most simple and cost-effective way such that anyone can monitor real-time information from the farm.</li>
-                    <li style="list-style: disc; list-style-position: inside;">Empower extension worker to provide better recommendation to the farmer through our district level agriculture advisory services center.</li>
+                    <li style=" list-style: disc; list-style-position: inside;">It helps to uplifts the socio-economic status of farmers.
+                    </li>
+                    <li style="list-style: disc; list-style-position: inside;">It helps to remove the broker system i.e. middlemen.
+                    </li>
+                    <li style="list-style: disc; list-style-position: inside;">It helps farmers to be modernize about the marketing and trading.
+                    </li>
+                    <li style="list-style: disc; list-style-position: inside;">It allows farmers to make smart decisions about farming.
+
+                    </li>
+
                 </ul>
                 <!-- <p class="col-lg-MB-20">&nbsp;</p>
 

@@ -1,18 +1,18 @@
 <?php
-include('../dbconn.php');
+include('../includes/dbconn.php');
 session_start();
 extract($_POST);
 
 if (isset($login)) {
     $user = $_POST["user"];
     $pass = $_POST["pass"];
-    $que = mysqli_query($mysqli, "select * from admin where user='$user' and pass='$pass'");
+    $que = mysqli_query($mysqli, "SELECT * FROM admin WHERE user='$user' AND pass='$pass'");
     $row = mysqli_num_rows($que);
     if ($row) {
         $_SESSION['admin'] = $user;
-        header('location:dashboard.php');
+        echo "<script>alert('Admin Login Successful');window.location.href='./dashboard.php';</script>";
     } else {
-        $err = "<font color='red'>Please check your user and password!!</font>";
+        $err = "<center><font style='Loco' color='red'>Invalid Username and Password!!</font></center>";
     }
 }
 ?>
@@ -20,7 +20,7 @@ if (isset($login)) {
 <html lang="en">
 
 <head>
-    <title>Admin Login/KisanArea</title>
+    <title>KisanArea | Admin Login</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <!-- <script src="./js/validate.js"></script> -->
     <!-- Website Logo -->
@@ -64,7 +64,7 @@ if (isset($login)) {
                                     </div>
 
                                     <div class="form-group d-flex form-group justify-content-center">
-                                        <input name="login" type="submit" value="Login" class="d-flex justify-content-between btn btn-success btn-block">
+                                        <input name="login" type="submit" value="Login" class="d-flex justify-content-between btn navigation text-white btn-block">
                                     </div>
                                     <?php echo @$err; ?>
                                 </fieldset>
@@ -76,16 +76,16 @@ if (isset($login)) {
         </div>
 
         <!-- jQuery -->
-        <script src="../css/css/jquery.min.js"></script>
+        <!-- <script src="../css/css/jquery.min.js"></script> -->
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="../css/css/bootstrap.min.js"></script>
+        <!-- <script src="../css/css/bootstrap.min.js"></script> -->
 
         <!-- Metis Menu Plugin JavaScript -->
-        <script src="../css/css/metisMenu.min.js"></script>
+        <!-- <script src="../css/css/metisMenu.min.js"></script> -->
 
         <!-- Custom Theme JavaScript -->
-        <script src="../css/css/sb-admin-2.js"></script>
+        <!-- <script src="../css/css/sb-admin-2.js"></script> -->
 
 </body>
 

@@ -20,12 +20,11 @@ include './includes/dbconn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>KisanArea</title>
+    <title>KisanArea | Category: Fruits</title>
     <!-- Website Logo-->
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-
     <link href="./css/bootstrap.css" rel="stylesheet" />
     <!-- <link href="./css/bootstrap.min.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -44,20 +43,20 @@ include './includes/dbconn.php';
     <header class="bg-dark p-3">
         <div class="container my-5">
             <div class="text-center text-white font">
-                <h1 class="display-4 fw-bolder font">We Provide What You Need</h1>
-                <p class="lead fw-normal text-white-50 mb-0 font">Welcome to KisanArea !!!</p>
+                <h1 class="display-4 fw-bolder font">Category: Fruits</h1>
             </div>
         </div>
     </header>
     <!-- Section-->
     <?php
-    $featuredProducts = mysqli_query($mysqli, "SELECT * FROM products WHERE isActive = 1");
+    $featuredProducts = mysqli_query($mysqli, "SELECT * FROM products WHERE category = 'Fruit'");
     ?>
     <?php include('includes/recent-products.php'); ?>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
+    <script src="js/script.js"></script>
 
     <?php
     require './includes/footer.php';

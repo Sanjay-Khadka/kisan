@@ -22,7 +22,7 @@
 
             <li>
                 <a class="nav-link text-white-50" href="#">
-                    <i class="far fa-user text-white-50"></i> Admin
+                    <i class="far fa-user text-white-50"></i> <?php echo $_SESSION['admin']; ?>
                 </a>
             </li>
             <li class="info">
@@ -52,7 +52,7 @@
                     <img src="../image/userw.png" class="img-circle elevation-2" alt="User Image" />
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block font">Admin</a>
+                    <a href="#" class="d-block font"><?php echo $_SESSION['admin']; ?></a>
                 </div>
             </div>
 

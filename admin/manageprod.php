@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../dbconn.php';
+include '../includes/dbconn.php';
 ?>
 
 <!DOCTYPE html>
@@ -91,17 +91,16 @@ include '../dbconn.php';
 
                     $i = 1;
                     while ($row = mysqli_fetch_assoc($q)) {
-
                         echo "<tr>";
                         echo "<td>" . $i . "</td>";
                         echo "<td>" . $row['name'] . "</td>";
-                        echo "<td>" . '<img class="card-img-top img-fluid img-thumbnail w-50" src="./uploads/products<?php echo $featuredProd["photo"];"?>' . "</td>";
-                        echo "<td>" . $row['description'] . "</td>";
-                        echo "<td>" . $row['price'] . "</td>";
-
                     ?>
+                        <td class="w-25 "><img class="img-fluid w-75" src="../admin/uploads/products/<?php echo $row['photo']; ?>" alt="" />
+                            <?php
+                            echo "<td>" . $row['description'] . "</td>";
+                            echo "<td>" . $row['price'] . "</td>";
+                            ?>
                         <td><a href="javascript:DeleteProducts('<?php echo $row['productid']; ?>')" class="btn btn-danger">Delete</a></td>
-
 
                     <?php
                         echo "<td><a href='updateProd.php?page=updateProd&pid=" . $row['productid'] . "' class='btn btn-secondary'>Update</a></td>";
@@ -125,7 +124,7 @@ include '../dbconn.php';
     <script>
         function DeleteProducts(id) {
             if (confirm("Do you want to delete this product?")) {
-                alert("Product Deleted.");
+                alert("Product Deleted");
                 window.location.href = "deleteprod.php?id=" + id;
             }
         }
