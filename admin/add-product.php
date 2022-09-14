@@ -4,7 +4,7 @@ include '../includes/dbconn.php';
 
 $name = '';
 $photo = 'no-image.jpg';
-$shortdescription = '';
+$unit = '';
 $description = '';
 $features = '';
 $category = '';
@@ -15,12 +15,13 @@ $isFeatured = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = $_POST['name'];
   $photo = $_FILES["photo"]["name"];
-  $shortdesc = $_POST['shortdescription'];
+  $unit = $_POST['unit'];
   $price = $_POST['price'];
   $description = $_POST['description'];
   $isActive = $_POST['isActive'];
   $isFeatured = $_POST['isFeatured'];
   $category = $_POST['category'];
+  $stock = $_POST['stock'];
 
   try {
 
@@ -37,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Code to Upload Files
 
-    $query = mysqli_query($mysqli, "INSERT INTO products (name,photo,shortdescription,description,price,isActive,isFeatured,category) values ('$name','$photo','$shortdesc','$description','$price','$isActive','$isFeatured','$category')");
+    $query = mysqli_query($mysqli, "INSERT INTO products (name,photo,unit,description,price,stock,isActive,isFeatured,category) values ('$name','$photo','$unit','$description','$price','$stock','$isActive','$isFeatured','$category')");
   } catch (Exception $e) {
     $message = 'Unable to add new product.' . $e;
     throw new Exception('Unable to save details. Please try again later.', 0, $e);
@@ -128,17 +129,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <input type="file" name="photo" id="photo" class="form-control border-1 border-secondary" required placeholder="Photo URL">
             </div>
 
-            <div class="form-group col-md-6 col-lg-6">
+            <div class="form-group col-sm-4">
               <label>Price</label>
               <input type="number" name="price" id="price" required placeholder="Price" class="form-control border-1 border-secondary">
             </div>
 
-            <div class="form-group col-md-8 col-lg-12">
-              <label>Short Description</label>
-              <textarea name="shortdescription" id="shortdescription" cols="10" rows="5" class="form-control border-1 border-secondary" required placeholder="Short Description"></textarea>
+            <div class="form-group col-sm-4">
+              <label>Unit</label>
+              <select name="unit" required autocomplete="off" class="form-control border-1 border-secondary combobox" id="unit">
+                <option value="Kg">Kg</option>
+                <option value="Dozen">Dozen</option>
+                <option value="Piece">Piece</option>
+                <option value="Mutha">Mutha</option>
+                <option value="Bunch">Bunch</option>
+              </select>
             </div>
 
-            <div class=" form-group col-md-8 col-lg-12">
+            <div class="form-group col-sm-4">
+              <label>Stock</label>
+              <input type="number" name="stock" id="stock" required placeholder="Stock" class="form-control border-1 border-secondary">
+            </div>
+
+            <div class="form-group col-md-8 col-lg-12">
               <label>Product Description:</label>
               <textarea name="description" id="description" cols="10" rows="5" class="form-control border-1 border-secondary" required placeholder="Product Description"></textarea>
             </div>

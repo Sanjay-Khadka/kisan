@@ -1,7 +1,14 @@
 <?php
+include('./includes/dbconn.php');
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['Add_To_cart'])) {
+        $productDetail = mysqli_query($mysqli, "SELECT * FROM products WHERE name = '$_POST[pname]'");
+        $product = mysqli_fetch_array($productDetail);
+        if ($product['stock'] < $_POST['Mod_Quantity']) {
+            echo '<script>alert("Insufficient stock");
+        window.location.href="./index.php";</script>';
+        } else 
         if (isset($_SESSION['cart'])) {
             $myitems = array_column($_SESSION['cart'], 'Item_name');
             if (in_array($_POST['Item_name'], $myitems)) {
@@ -45,10 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($_SESSION['cart'] as $key => $value) {
             if ($value['Item_name'] == $_POST['Item_name']) {
                 $_SESSION['cart'][$key]['Quantity'] = $_POST['Mod_Quantity'];
-
-                echo "<script>
-      window.location.href='./mycart.php';
-    </script>";
+                echo "<script>window.location.href='./mycart.php';</script>";
             }
         }
     }

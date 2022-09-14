@@ -42,9 +42,8 @@
                                         <?php echo $featuredProd['name']; ?>
                                     </h5>
                                     <!-- Product price-->
-                                    Rs. <?php echo $featuredProd['price']; ?>
+                                    Rs. <?php echo $featuredProd['price'] . ' ' . '/' . ' ' . $featuredProd['unit']; ?>
 
-                                    <p><?php echo $featuredProd['shortdescription']; ?></p>
                                 </div>
                             </div>
                             <!-- Product actions-->

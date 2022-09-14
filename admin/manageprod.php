@@ -73,7 +73,7 @@ include '../includes/dbconn.php';
             ?>
                 <h2>All Products</h2>
 
-                <table class="table table-bordered table-hover border-dark mb-2">
+                <table class="table table-bordered table-hover mb-2">
                     <tr>
                         <th colspan="7"><a href="add-product.php">Add New Product</a></th>
                     </tr>
@@ -83,11 +83,11 @@ include '../includes/dbconn.php';
                         <th>Photo</th>
                         <th>Description</th>
                         <th>Price</th>
+                        <th>Stock</th>
                         <th>Delete</th>
                         <th>Update</th>
                     </tr>
                     <?php
-
 
                     $i = 1;
                     while ($row = mysqli_fetch_assoc($q)) {
@@ -99,6 +99,7 @@ include '../includes/dbconn.php';
                             <?php
                             echo "<td>" . $row['description'] . "</td>";
                             echo "<td>" . $row['price'] . "</td>";
+                            echo "<td>" . $row['stock'] . "</td>";
                             ?>
                         <td><a href="javascript:DeleteProducts('<?php echo $row['productid']; ?>')" class="btn btn-danger">Delete</a></td>
 

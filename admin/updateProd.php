@@ -4,7 +4,7 @@ session_start();
 
 extract($_POST);
 if (isset($update)) {
-	mysqli_query($mysqli, "UPDATE products SET price='$price',shortdescription='$shortdescription', description='$description' where productid='" . $_GET['pid'] . "'");
+	mysqli_query($mysqli, "UPDATE products SET price='$price',unit='$unit',stock='$stock', description='$description' where productid='" . $_GET['pid'] . "'");
 	$err = "<font color='blue'>Product updated </font>";
 	echo '<script>
 	alert("Product Updated");
@@ -91,14 +91,26 @@ include '../includes/aside.php'; ?>
 					</div>
 
 					<div class="form-group mb-3">
-						<b>Enter Short Description</b>
-						<textarea name="shortdescription" class=" mt-2 border-secondary form-control"><?php echo $res['shortdescription']; ?></textarea>
+						<b>Unit</b>
+						<select name="unit" required autocomplete="off" class="form-control border-1 border-secondary combobox" id="unit">
+							<option value="Kg">Kg</option>
+							<option value="Dozen">Dozen</option>
+							<option value="Piece">Piece</option>
+							<option value="Mutha">Mutha</option>
+							<option value="Bunch">Bunch</option>
+						</select>
+					</div>
+
+					<div class="form-group mb-3">
+						<b>Enter Available Stock</b>
+						<input type="text" name="stock" class="mt-2 border-secondary form-control" value="<?php echo $res['stock']; ?>">
 					</div>
 
 					<div class="form-group mb-3">
 						<b>Enter Description</b>
 						<textarea name="description" class="mt-2 border-secondary form-control"><?php echo $res['description']; ?></textarea>
 					</div>
+
 
 					<div class="form-group mb-3">
 						<b>Select Product</b>

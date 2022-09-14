@@ -13,7 +13,12 @@ include("./includes/dbconn.php");
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-
+    <!-- js for dropdown -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <link href="./css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -48,7 +53,7 @@ include("./includes/dbconn.php");
                                 <td>$value[price]<input type='hidden' class='iprice' value='$value[price]'></td>
                                 <td>
                                 <form action='./addtocart.php' method='POST'>
-                                <input class='text-center iquantity' name='Mod_Quantity' id='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[Quantity]' min='1' max='12'></td>
+                                $value[Quantity]<input class='text-center iquantity' name='Mod_Quantity' id='Mod_Quantity' onchange='this.form.submit();' type='hidden' value='$value[Quantity]' min='1' max=''>                                </td>
                                 <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                 </form>
                                 </td>
@@ -66,38 +71,49 @@ include("./includes/dbconn.php");
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-3 font">
-                <div class="border border-success mb-5 border-2 bg-light rounded p-4">
-                    <h4>Grand Total:</h4>
-                    <h5 class="text-right" id="gtotal"></h5>
-                    <?php
-                    if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
-                    ?>
-                        <!--customer details for payment -->
-                        <form action="./purchase.php" method="POST" class="my-0" enctype="multipart/form-data">
-                            <div class="form-group mt-3 mb-3">
-                                <b><label>Full Name:</label></b>
-                                <input type="text" name="fullname" id="fullname" placeholder="Full Name" class="form-control border-success" required>
-                            </div>
-                            <div class="form-group mt-3 mb-3">
-                                <b><label>Phone Number:</label></b>
-                                <input type="number" name="phone_no" id="phone_no" placeholder="Phone Number" class="form-control border-success" required>
-                            </div>
-                            <div class="form-group mt-3 mb-3">
-                                <b><label>Address</label></b>
-                                <input type="text" name="address" id="address" placeholder="Address" class="form-control border-success" required>
-                            </div>
-                            <div class="form-group mt-3 mb-3">
-                                <input class="form-check-input border-success" type="radio" name="pay_mode" value="COD" id="flexRadioDefault1">
-                                <b><label class="form-check-label" for="flexRadioDefault1">Cash On Delivery
-                                    </label></b>
-                            </div>
-                            <button class="btn btn navigation text-white m-auto d-flex justify-content-center" name="purchase">Purchase</button>
-                        </form>
-                    <?php
-                    } ?>
+
+            <?php
+            $uname = $_SESSION['username'];
+            $userDetail = mysqli_query($mysqli, "SELECT * FROM alldetails WHERE username = '$uname'");
+
+            while ($userinfo = mysqli_fetch_array($userDetail)) { ?>
+                <div class="col-lg-3 font">
+                    <div class="border border-success mb-5 border-2 bg-light rounded p-4">
+                        <h4>Grand Total:</h4>
+                        <h5 class="text-right" id="gtotal"></h5>
+                        <?php
+                        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                        ?>
+                            <!--customer details for payment -->
+
+                            <form action="./purchase.php" method="POST" class="my-0" enctype="multipart/form-data">
+                                <div class="form-group mt-3 mb-3">
+                                    <b><label>Username: </label></b>
+                                    <?php echo $userinfo['fullname']; ?><input type="hidden" name="fullname" id="fullname" value="<?php echo $userinfo['fullname']; ?>" placeholder="Full Name" class="form-control border-success" required>
+                                </div>
+                                <div class="form-group mt-3 mb-3">
+                                    <b><label>Phone: </label></b>
+                                    <?php echo $userinfo['phone'] ?><input type="hidden" name="phone_no" id="phone_no" value="<?php echo $userinfo['phone'] ?>" placeholder="Phone Number" class="form-control border-success" required>
+                                </div>
+                                <div class="form-group mt-3 mb-3">
+                                    <b><label>Address: </label></b>
+                                    <?php echo $userinfo['address'] ?><input type="hidden" name="address" id="address" value="<?php echo $userinfo['address'] ?>" placeholder="Address" class="form-control border-success" required>
+                                </div>
+                                <div class="form-group mt-3 mb-3">
+                                    <input class="form-check-input border-success" checked type="radio" name="pay_mode" value="COD" id="flexRadioDefault1">
+                                    <b><label class="form-check-label" for="flexRadioDefault1">Cash On Delivery
+                                        </label></b>
+                                </div>
+                                <button class="btn btn navigation text-white m-auto d-flex justify-content-center" name="purchase">Purchase</button>
+                            </form>
+
+                        <?php
+                        } ?>
+                    </div>
+
                 </div>
-            </div>
+            <?php
+            } ?>
         </div>
     </div>
 

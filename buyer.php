@@ -9,13 +9,16 @@
     <title>Signup Buyer | KisanArea</title>
     <!-- Website Logo -->
     <link rel="icon" type="image/x-icon" href="./image/kisanarea.png" />
+    <!-- js for dropdown -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="./css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/signup.js" defer></script>
-
 </head>
 
 <body class="bg-dark">
@@ -38,10 +41,19 @@
                                     <span class="text-danger fname-not-found mt-2"></span>
                                 </div>
 
-
                                 <div class="form-group mb-3">
                                     <input type="email" name="email" id="email" class="form-control border-success" placeholder="E-mail" />
                                     <span class="text-danger email-not-found"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <input type="address" name="address" id="address" class="form-control border-success" placeholder="Address" />
+                                    <span class="text-danger address-not-found"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <input type="phone" name="phone" id="phone" class="form-control border-success" placeholder="Phone Number" />
+                                    <span class="text-danger phone-not-found"></span>
                                 </div>
 
                                 <div class="form-group mb-3">
