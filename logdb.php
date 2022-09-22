@@ -4,10 +4,13 @@ include './includes/dbconn.php';
 extract($_POST);
 
 if (isset($login)) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $query = mysqli_query($mysqli, "SELECT * FROM users WHERE username='$username' AND password='$password'");
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    // $query = mysqli_query($mysqli, "SELECT * FROM users WHERE username='$username' AND password='$password'");
+    $pass = md5($password);
+    $query = mysqli_query($mysqli, "SELECT username, password FROM users WHERE username ='$username' AND password = '$pass'");
     $row = mysqli_num_rows($query);
+
     if ($row) {
         session_start();
         $_SESSION['username'] = $username;

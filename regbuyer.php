@@ -10,16 +10,15 @@ if (isset($_POST['username']) && $_POST['password']) {
     $password = $_POST['password'];
     $address = $_POST['address'];
 }
+$pass = md5($password);
+$sql = "INSERT INTO users(fullname,email,address,phone,username,password)
+    VALUES ('$fname','$email','$address','$phone','$username','$pass')";
 
-$sql = "INSERT INTO alldetails(fullname,email,address,phone,username,password)
-    VALUES ('$fname','$email','$address','$phone','$username','$password')";
-
-$sql1 = "INSERT INTO users(username,password) VALUES ('$username','$password')";
+// $sql1 = "INSERT INTO users(username,password) VALUES ('$username','$password')";
 if ($mysqli->query($sql) > 0) {
-    if ($mysqli->query($sql1) > 0) {
-        echo "<script>alert('User Registered Successfully');
+    // if ($mysqli->query($sql1) > 0) {
+    echo "<script>alert('User Registered Successfully');
     window.location.href='login.php'</script>";
-    }
 } else {
     echo "<script>alert('Error while registering');
     </script>";
