@@ -23,8 +23,9 @@
 
 <body class="bg-dark">
     <?php
-    require './includes/menu.php';
+    require './/menu.php';
     ?>
+
 
     <section class="">
         <div class="container">

@@ -65,7 +65,7 @@ include '../includes/dbconn.php';
 
 
                 <?php
-                $q = mysqli_query($mysqli, "SELECT * FROM alldetails");
+                $q = mysqli_query($mysqli, "SELECT * FROM users");
                 $rr = mysqli_num_rows($q);
                 if (!$rr) {
                     echo "<h2 style='color:red'>No any user exists !!!</h2>";

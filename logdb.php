@@ -7,8 +7,8 @@ if (isset($login)) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     // $query = mysqli_query($mysqli, "SELECT * FROM users WHERE username='$username' AND password='$password'");
-    $pass = md5($password);
-    $query = mysqli_query($mysqli, "SELECT username, password FROM users WHERE username ='$username' AND password = '$pass'");
+
+    $query = mysqli_query($mysqli, "SELECT username, password FROM users WHERE username ='$username' AND password = '$password'");
     $row = mysqli_num_rows($query);
 
     if ($row) {

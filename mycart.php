@@ -74,7 +74,7 @@ include("./includes/dbconn.php");
 
             <?php
             $uname = $_SESSION['username'];
-            $userDetail = mysqli_query($mysqli, "SELECT * FROM alldetails WHERE username = '$uname'");
+            $userDetail = mysqli_query($mysqli, "SELECT * FROM users  WHERE username = '$uname'");
 
             while ($userinfo = mysqli_fetch_array($userDetail)) { ?>
                 <div class="col-lg-3 font">
