@@ -18,7 +18,10 @@ include("./includes/dbconn.php");
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- <link href="./css/bootstrap.min.css" rel="stylesheet" /> -->
+    <script src="./js/gt.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
 </head>
 
 <body>
@@ -86,7 +89,7 @@ include("./includes/dbconn.php");
                         ?>
                             <!--customer details for payment -->
 
-                            <form action="./purchase.php" method="POST" class="my-0" enctype="multipart/form-data">
+                            <form method="POST" class="my-0" enctype="multipart/form-data" id="cart-form">
                                 <div class="form-group mt-3 mb-3">
                                     <b><label>Username: </label></b>
                                     <?php echo $userinfo['fullname']; ?><input type="hidden" name="fullname" id="fullname" value="<?php echo $userinfo['fullname']; ?>" placeholder="Full Name" class="form-control border-success" required>
@@ -100,11 +103,13 @@ include("./includes/dbconn.php");
                                     <?php echo $userinfo['address'] ?><input type="hidden" name="address" id="address" value="<?php echo $userinfo['address'] ?>" placeholder="Address" class="form-control border-success" required>
                                 </div>
                                 <div class="form-group mt-3 mb-3">
-                                    <input class="form-check-input border-success" checked type="radio" name="pay_mode" value="COD" id="flexRadioDefault1">
-                                    <b><label class="form-check-label" for="flexRadioDefault1">Cash On Delivery
-                                        </label></b>
+                                    <select name="pay_mode" required id="select" class="form-control">
+                                        <option value="">Select Payment Method</option>
+                                        <option value="COD">Cash On Delivery</option>
+                                        <option value="khalti">Khalti</option>
+                                    </select>
                                 </div>
-                                <button class="btn btn navigation text-white m-auto d-flex justify-content-center" name="purchase">Purchase</button>
+                                <button class="btn btn navigation text-white m-auto d-flex justify-content-center" name="purchase" id="purchase">Purchase</button>
                             </form>
 
                         <?php
@@ -118,25 +123,68 @@ include("./includes/dbconn.php");
     </div>
 
     <!--for grand total of the items-->
-    <script type="text/javascript">
-        var gt = 0; //grand total
-        var iprice = document.getElementsByClassName('iprice');
-        var iquantity = document.getElementsByClassName('iquantity');
-        var itotal = document.getElementsByClassName('itotal');
-        var gtotal = document.getElementById('gtotal');
-
-        function subTotal() {
-            gt = 0;
-            for (i = 0; i < iprice.length; i++) {
-                itotal[i].innerText = (iprice[i].value) * (iquantity[i].value);
-                gt = gt + (iprice[i].value) * (iquantity[i].value);
-                /* price 650 quantity 1      gt=0+(650*1)
-                price 750 quantity 2          gt= 650+(750*2) === gt = 2150
-                price 850 quantity 1          gt= 2150+(850*1)=== gt = 3000 */
+    <script type="text/javascript" defer>
+        const btn = document.getElementById("purchase");
+        const payment = document.getElementById("select");
+        payment.onchange = function() {
+            if (payment.value === "khalti") {
+                btn.style.backgroundColor = "#5e338dff";
+                btn.innerHTML = "Pay with Khalti";
+            } else {
+                btn.style.backgroundColor = "black";
+                btn.innerHTML = "Purchase"
             }
-            gtotal.innerText = gt;
         }
-        subTotal();
+        btn.onclick = function(event) {
+            const form = document.getElementById("cart-form");
+            const formdata = new FormData(form);
+            const dataObject = {};
+            formdata.forEach((value, key) => {
+                dataObject[key] = value;
+            })
+            if (payment.value === "COD") {
+                event.preventDefault();
+                $.post("./purchase.php", dataObject, result => {
+                    if (result === 'Order Placed')
+                        alert("Order placed");
+                    window.location.href = "index.php";
+                })
+            } else {
+                event.preventDefault();
+                const pay_mode = document.getElementById("select").value;
+                const address = document.getElementById("address").value;
+                var config = {
+                    "publicKey": "test_public_key_1059426c6e474dcd8aba71df6f39df8f",
+                    "productIdentity": "rgfasdgse",
+                    "productName": "354tfdff",
+                    "productUrl": "http://localhost/products.php",
+                    "paymentPreference": [
+                        "KHALTI",
+                    ],
+                    "eventHandler": {
+                        onSuccess(payload) {
+                            $.post("./purchase.php", dataObject, result => {
+                                if (result === 'Order Placed')
+                                    alert(result);
+                                window.location.href = "index.php";
+                            })
+                            console.log(payload)
+                        },
+                        onError(error) {
+                            console.log(error);
+                        },
+                        onClose() {
+                            console.log('widget is closing');
+                        }
+                    }
+                };
+
+                var checkout = new KhaltiCheckout(config);
+                checkout.show({
+                    amount: 1000
+                })
+            }
+        }
     </script>
     <?php
     require './includes/footer.php';

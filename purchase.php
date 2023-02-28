@@ -2,7 +2,7 @@
 session_start();
 include('./includes/dbconn.php');
 
-
+extract($_POST);
 
 if (mysqli_connect_error()) {
   echo "<script>
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")    //checking the server method is pos
   if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $key => $value) {
       $sr = $key + 1;
-      if (isset($_POST['purchase']))   //checking make purchse button
+      if (isset($_POST))   //checking make purchse button
       {
         $pname = $value['Item_name'];
         $productDetail = mysqli_query($mysqli, "SELECT * FROM products WHERE name = '$pname'");
